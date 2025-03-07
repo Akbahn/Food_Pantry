@@ -1,0 +1,8 @@
+@FXML
+void goToLoginPage(ActionEvent event) throws IOException {
+    FXMLLoader fxmlLoader = new FXMLLoader(FoodPantryApplication.class.getResource("login-page.fxml"));
+    Scene scene = new Scene(fxmlLoader.load());
+    Stage stage = (Stage) loginBtn.getScene().getWindow();
+    stage.setScene(scene);
+    stage.show();
+}
