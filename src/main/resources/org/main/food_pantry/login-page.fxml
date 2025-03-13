@@ -8,12 +8,12 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="532.0" prefWidth="778.0" stylesheets="@Styles/splashpagestyle.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.main.food_pantry.LoginPageController">
+<AnchorPane prefHeight="532.0" prefWidth="778.0" stylesheets="@Styles/splashpagestyle.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.main.food_pantry.Controllers.LoginPageController">
    <children>
       <VBox alignment="CENTER_LEFT" layoutX="103.0" layoutY="198.0" prefHeight="190.0" prefWidth="573.0">
          <children>
-            <Label text="Email:" />
-            <TextField fx:id="emailTxtF" prefHeight="26.0" prefWidth="384.0" />
+            <Label text="Username:" />
+            <TextField fx:id="usernameTxtF" prefHeight="26.0" prefWidth="384.0" />
             <Label text="Password:" />
             <TextField fx:id="passwordTxtF" />
             <Button fx:id="signInBtn" mnemonicParsing="false" onAction="#goToPage" prefHeight="26.0" prefWidth="574.0" text="Sign In" />

@@ -1,4 +1,4 @@
-package org.main.food_pantry;
+package org.main.food_pantry.Controllers;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -7,6 +7,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
 import javafx.stage.Stage;
+import org.main.food_pantry.FoodPantryApplication;
 
 import java.io.IOException;
 
