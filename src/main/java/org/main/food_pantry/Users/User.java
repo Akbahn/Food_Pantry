@@ -8,29 +8,46 @@ import java.sql.SQLException;
 import java.sql.Statement;
 
 public abstract class User {
-    protected String name, username, password, role;
     protected int id;
+    protected String name, username, password, role;
 
     public User(String name, String username, String password, String role) {
-        this.id = generateUniqueID(); // Automatically generates ID
         this.name = name;
         this.username = username;
         this.password = password;
         this.role = role;
     }
 
-    private int generateUniqueID() {
-        int newID = 1;
-        try (Connection conn = Database.getConnection();
-             Statement stmt = conn.createStatement();
-             ResultSet rs = stmt.executeQuery("SELECT MAX(id) FROM users")) {
-            if (rs.next()) {
-                newID = rs.getInt(1) + 1; // Increment max ID by 1
-            }
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-        return newID;
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public int getId() {
+        return id;
     }
 
     public String getRole() {

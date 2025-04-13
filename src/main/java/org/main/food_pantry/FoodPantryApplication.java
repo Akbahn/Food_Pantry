@@ -10,7 +10,7 @@ import java.io.IOException;
 public class FoodPantryApplication extends Application {
     @Override
     public void start(Stage stage) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(FoodPantryApplication.class.getResource("splash-page.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(FoodPantryApplication.class.getResource("login-page.fxml"));
         Scene scene = new Scene(fxmlLoader.load());
         stage.setTitle("Food Pantry");
         stage.setScene(scene);
