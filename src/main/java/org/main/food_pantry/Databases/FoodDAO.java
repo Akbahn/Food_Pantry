@@ -25,7 +25,7 @@ public class FoodDAO {
                         rs.getInt("quantity"),
                         rs.getDate("expiration_date").toLocalDate(),
                         rs.getString("description"),
-                        rs.getString("image_path") // ✅
+                        rs.getString("image_path")
                 );
 
                 foodList.add(food);
@@ -72,7 +72,7 @@ public class FoodDAO {
                 Food food = new Food(
                         rs.getInt("id"),
                         rs.getString("name"),
-                        FoodCategory.valueOf(rs.getString("category")), // be sure this matches your enum!
+                        FoodCategory.valueOf(rs.getString("category")),
                         rs.getInt("quantity"),
                         rs.getDate("expiration_date").toLocalDate(),
                         rs.getString("description"),

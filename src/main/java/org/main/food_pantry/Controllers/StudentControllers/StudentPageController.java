@@ -59,7 +59,7 @@ public class StudentPageController {
     }
 
     private int getLoggedInUserId() {
-        return CurrentUser.getId(); // Replace hardcoded value with actual session data
+        return CurrentUser.getId();
     }
 
     @FXML

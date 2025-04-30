@@ -4,13 +4,12 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.stage.Stage;
-import org.main.food_pantry.Databases.CurrentUser; // ✅ Make sure this import exists
+import org.main.food_pantry.Databases.CurrentUser;
 import org.main.food_pantry.Databases.Database;
-import org.main.food_pantry.Controllers.SceneManager; // ✅ Assuming you have a SceneManager class for screen switching
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
-import java.sql.ResultSet; // ✅ Missing this import
+import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class LoginPageController {
@@ -32,19 +31,19 @@ public class LoginPageController {
             stmt.setString(1, usernameInput);
             stmt.setString(2, passwordInput);
 
-            ResultSet rs = stmt.executeQuery(); // ✅ Need to import ResultSet for this to work
+            ResultSet rs = stmt.executeQuery();
 
             if (rs.next()) {
-                // ✅ Extract user info from DB
+                // Extract user info from DB
                 int userId = rs.getInt("id");
                 String name = rs.getString("name");
                 String username = rs.getString("username");
                 String role = rs.getString("role");
 
-                // ✅ Store logged-in user globally
+                // Store logged-in user globally
                 CurrentUser.setUser(userId, name, username, role);
 
-                // ✅ Navigate to appropriate page
+                // Navigate to appropriate page
                 Stage stage = (Stage) usernameField.getScene().getWindow();
 
                 switch (role.toLowerCase()) {
@@ -53,9 +52,6 @@ public class LoginPageController {
                     case "admin" -> SceneManager.switchScene(stage, "/org/main/food_pantry/AdminPages/admin-page.fxml"); // Adjust if needed
                     default -> showAlert("Unknown role", "Your account has no valid role assigned.");
                 }
-
-
-
             } else {
                 statusLabel.setText("Invalid username or password.");
             }

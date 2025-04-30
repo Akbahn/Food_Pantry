@@ -49,7 +49,6 @@ public class FoodListPageController {
 
     private Image getCategoryImage(FoodCategory category) {
         String path;
-
         switch (category) {
             case DAIRY -> path = "/org/main/food_pantry/Images/FoodCategory/icons8-dairy-50.png";
             case MEAT -> path = "/org/main/food_pantry/Images/FoodCategory/icons8-meat-50.png";

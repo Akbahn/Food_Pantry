@@ -12,9 +12,8 @@ public class FoodPantryApplication extends Application {
     public void start(Stage primaryStage) {
         // Initialize the database first
         Database.initializeDatabase();
-
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/org/main/food_pantry/login-page.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/org/main/food_pantry/splash-page.fxml"));
             Scene scene = new Scene(loader.load());
             primaryStage.setScene(scene);
             primaryStage.setTitle("Food Pantry Login");
