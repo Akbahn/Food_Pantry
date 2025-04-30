@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+<BorderPane prefHeight="502.0" prefWidth="813.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.main.food_pantry.Controllers.VolunteerControllers.VolunteerPageController">
+
+    <!-- Top Menu Bar -->
+    <top>
+        <HBox alignment="CENTER_LEFT" spacing="10" style="-fx-padding: 10;">
+            <children>
+                <MenuBar prefHeight="28.0" prefWidth="745.0">
+                    <menus>
+                        <Menu mnemonicParsing="false" text="File">
+                            <items>
+                                <MenuItem mnemonicParsing="false" text="Close" />
+                            </items>
+                        </Menu>
+                        <Menu mnemonicParsing="false" text="Edit">
+                            <items>
+                                <MenuItem mnemonicParsing="false" text="Settings" />
+                            </items>
+                        </Menu>
+                        <Menu mnemonicParsing="false" text="Help">
+                            <items>
+                                <MenuItem mnemonicParsing="false" text="About" />
+                            </items>
+                        </Menu>
+                    </menus>
+                </MenuBar>
+                <ImageView fx:id="cartImage" fitHeight="29.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@../Images/icons8-cart-30.png" />
+                    </image>
+                </ImageView>
+
+            </children>
+        </HBox>
+    </top>
+
+    <!-- Left Sidebar -->
+    <left>
+        <VBox alignment="TOP_CENTER" spacing="15" style="-fx-padding: 10;">
+            <children>
+                <ImageView fx:id="profileImageView" fitHeight="150" fitWidth="150">
+                    <image>
+                        <Image url="@../Images/icons8-profile-picture-24.png" />
+                    </image>
+                </ImageView>
+                <Button fx:id="manageInventoryBtn" onAction="#goToManageInventory" prefHeight="26.0" prefWidth="150.0" text="Manage Inventory" />
+                <Button fx:id="manageRequestsBtn" onAction="#goToManageRequests" prefHeight="26.0" prefWidth="150.0" text="Manage Requests" />
+                <Button fx:id="scheduleBtn" onAction="#goToSchedule" prefHeight="26.0" prefWidth="150.0" text="Schedule" />
+            </children>
+        </VBox>
+    </left>
+
+    <!-- Center Content -->
+    <center>
+        <VBox alignment="TOP_CENTER" spacing="20" style="-fx-padding: 20;">
+            <children>
+                <Label style="-fx-font-size: 20px; -fx-font-weight: bold;" text="Volunteer Dashboard" />
+                <Label style="-fx-font-size: 14px;" text="Select an Action" />
+            </children>
+        </VBox>
+    </center>
+
+</BorderPane>

@@ -5,12 +5,25 @@ import java.time.LocalDate;
 public class Food {
     private int id;
     private String name;
-    private String category;
+    private FoodCategory category;
     private int quantity;
     private LocalDate expiration_date;
     private String description;
+    private String imagePath;
 
-    public Food(int id, String name, String category, int quantity, LocalDate expirationDate, String description){
+    public Food(int id, String name, FoodCategory category, int quantity,
+                LocalDate expirationDate, String description, String imagePath) {
+        this.id = id;
+        this.name = name;
+        this.category = category;
+        this.quantity = quantity;
+        this.expiration_date = expirationDate;
+        this.description = description;
+        this.imagePath = imagePath;
+    }
+
+
+    public Food(int id, String name, FoodCategory category, int quantity, LocalDate expirationDate, String description) {
         this.id = id;
         this.name = name;
         this.category = category;
@@ -19,8 +32,15 @@ public class Food {
         this.description = description;
     }
 
+    public String getImagePath() {
+        return imagePath;
+    }
 
+    public void setImagePath(String imagePath) {
+        this.imagePath = imagePath;
+    }
 
+    // Getters and Setters
     public int getId() {
         return id;
     }
@@ -37,11 +57,11 @@ public class Food {
         this.name = name;
     }
 
-    public String getCategory() {
+    public FoodCategory getCategory() {
         return category;
     }
 
-    public void setCategory(String category) {
+    public void setCategory(FoodCategory category) {
         this.category = category;
     }
 
@@ -67,5 +87,9 @@ public class Food {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public LocalDate getExpirationDate() {
+        return expiration_date;
     }
 }

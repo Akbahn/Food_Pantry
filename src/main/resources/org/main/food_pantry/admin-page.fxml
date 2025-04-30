@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.VBox?>
 
-<AnchorPane prefHeight="497.0" prefWidth="718.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.main.food_pantry.Controllers.AdminPageController">
+<AnchorPane prefHeight="497.0" prefWidth="718.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.main.food_pantry.Controllers.AdminControllers.AdminPageController">
    <children>
       <BorderPane layoutY="-2.0" prefHeight="497.0" prefWidth="719.0">
          <left>

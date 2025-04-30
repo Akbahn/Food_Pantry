@@ -1,6 +1,9 @@
-package org.main.food_pantry.Users;
+package org.main.food_pantry.Databases;
 
-import org.main.food_pantry.Database;
+import org.main.food_pantry.Users.Admin;
+import org.main.food_pantry.Users.Student;
+import org.main.food_pantry.Users.User;
+import org.main.food_pantry.Users.Volunteer;
 
 import java.sql.*;
 
@@ -12,16 +15,16 @@ public class UserDAO {
         try (Connection conn = Database.getConnection();
              PreparedStatement stmt = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) {
 
-            stmt.setString(1, user.name);
-            stmt.setString(2, user.username);
-            stmt.setString(3, user.password);
-            stmt.setString(4, user.role);
+            stmt.setString(1, user.getName());
+            stmt.setString(2, user.getUsername());
+            stmt.setString(3, user.getPassword());
+            stmt.setString(4, user.getRole());
             stmt.executeUpdate();
 
             ResultSet keys = stmt.getGeneratedKeys();
             if (keys.next()) {
                 int newId = keys.getInt(1);
-                user.id = newId; // set ID in object
+                user.setId(newId); // set ID in object
                 return newId;
             }
 
@@ -51,14 +54,15 @@ public class UserDAO {
                         return new Student(id, name, username, password);
                     case "Admin":
                         return new Admin(id, name, username, password);
-                    // Add Volunteer later
+                    case "Volunteer":
+                        return new Volunteer(id, name, username, password);
                 }
             }
 
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        return null; // login failed
+        return null;
     }
 
     public static boolean createUser(String name, String username, String password, String role) {

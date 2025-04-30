@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml"
+            fx:controller="org.main.food_pantry.Controllers.StudentControllers.StudentRequestPageController">
+
+    <top>
+        <HBox alignment="CENTER_LEFT" spacing="10" style="-fx-padding: 10;">
+            <Label fx:id="pageTitle" style="-fx-font-size: 20px; -fx-font-weight: bold;" text="My Requests"/>
+        </HBox>
+    </top>
+
+    <center>
+        <TableView fx:id="requestsTable" prefHeight="400" prefWidth="600">
+            <columns>
+                <TableColumn fx:id="foodNameColumn" text="Food Name" prefWidth="200"/>
+                <TableColumn fx:id="quantityColumn" text="Quantity" prefWidth="100"/>
+                <TableColumn fx:id="statusColumn" text="Status" prefWidth="100"/>
+                <TableColumn fx:id="dateColumn" text="Request Date" prefWidth="200"/>
+            </columns>
+        </TableView>
+    </center>
+
+</BorderPane>

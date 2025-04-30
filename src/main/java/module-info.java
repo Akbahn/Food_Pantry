@@ -12,4 +12,13 @@ module org.main.food_pantry {
     opens org.main.food_pantry.Users to javafx.fxml;
     exports org.main.food_pantry.Items;
     opens org.main.food_pantry.Items to javafx.fxml;
+    exports org.main.food_pantry.Controllers.StudentControllers;
+    opens org.main.food_pantry.Controllers.StudentControllers to javafx.fxml;
+    exports org.main.food_pantry.Controllers.VolunteerControllers;
+    opens org.main.food_pantry.Controllers.VolunteerControllers to javafx.fxml;
+    exports org.main.food_pantry.Controllers.AdminControllers;
+    opens org.main.food_pantry.Controllers.AdminControllers to javafx.fxml;
+    exports org.main.food_pantry.Databases;
+    opens org.main.food_pantry.Databases to javafx.fxml;
+    opens org.main.food_pantry.Models to javafx.base, javafx.fxml;
 }

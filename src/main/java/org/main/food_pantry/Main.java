@@ -2,7 +2,7 @@ package org.main.food_pantry;
 
 import org.main.food_pantry.Users.Student;
 import org.main.food_pantry.Users.User;
-import org.main.food_pantry.Users.UserDAO;
+import org.main.food_pantry.Databases.UserDAO;
 
 public class Main {
     public static void main(String[] args) {

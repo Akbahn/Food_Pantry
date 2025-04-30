@@ -1,4 +1,4 @@
-package org.main.food_pantry.Controllers;
+package org.main.food_pantry.Controllers.AdminControllers;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
