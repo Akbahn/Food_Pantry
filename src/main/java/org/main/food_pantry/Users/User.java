@@ -1,12 +1,5 @@
 package org.main.food_pantry.Users;
 
-import org.main.food_pantry.Database;
-
-import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
-
 public abstract class User {
     protected int id;
     protected String name, username, password, role;

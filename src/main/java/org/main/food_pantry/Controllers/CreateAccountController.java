@@ -3,8 +3,7 @@ package org.main.food_pantry.Controllers;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.stage.Stage;
-import org.main.food_pantry.Users.User;
-import org.main.food_pantry.Users.UserDAO;
+import org.main.food_pantry.Databases.UserDAO;
 
 public class CreateAccountController {
 

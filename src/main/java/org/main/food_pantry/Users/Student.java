@@ -1,6 +1,6 @@
 package org.main.food_pantry.Users;
 
-import org.main.food_pantry.Database;
+import org.main.food_pantry.Databases.Database;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;

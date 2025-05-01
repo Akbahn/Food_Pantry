@@ -1,11 +1,11 @@
-package org.main.food_pantry;
+package org.main.food_pantry.Databases;
 
 import java.sql.*;
 
 public class Database {
 
-    private static final String MYSQL_SERVER_URL = "jdbc:mysql://food-pantry-db.mysql.database.azure.com:3306/";
-    private static final String DB_NAME = "food_pantry";
+    private static final String MYSQL_SERVER_URL = "jdbc:mysql://food-pantry.mysql.database.azure.com/";
+    private static final String DB_NAME = "food-pantry";
     private static final String DB_URL = MYSQL_SERVER_URL + DB_NAME + "?useSSL=true";
     private static final String USERNAME = "akbahn";
     private static final String PASSWORD = "Hyder1000";
@@ -18,12 +18,11 @@ public class Database {
     // Initial setup method called once at app start
     public static boolean initializeDatabase() {
         boolean hasUsers = false;
-
         try {
             // Step 1: Connect to server and create database if not exists
             Connection conn = DriverManager.getConnection(MYSQL_SERVER_URL + "?useSSL=true", USERNAME, PASSWORD);
             Statement statement = conn.createStatement();
-            statement.executeUpdate("CREATE DATABASE IF NOT EXISTS " + DB_NAME);
+            statement.executeUpdate("CREATE DATABASE IF NOT EXISTS `" + DB_NAME + "`");
             statement.close();
             conn.close();
             System.out.println("✅ Database created or already exists.");
@@ -33,6 +32,8 @@ public class Database {
             statement = conn.createStatement();
 
             // Step 3: Create tables
+
+            // USERS Table
             String createUsers = "CREATE TABLE IF NOT EXISTS users ("
                     + "id INT AUTO_INCREMENT PRIMARY KEY,"
                     + "name VARCHAR(100) NOT NULL,"
@@ -42,16 +43,19 @@ public class Database {
                     + ")";
             statement.executeUpdate(createUsers);
 
+            // FOOD_ITEMS Table
             String createFoodItems = "CREATE TABLE IF NOT EXISTS food_items ("
                     + "id INT AUTO_INCREMENT PRIMARY KEY,"
                     + "name VARCHAR(100) NOT NULL,"
                     + "category VARCHAR(50),"
                     + "quantity INT NOT NULL,"
                     + "expiration_date DATE,"
-                    + "description VARCHAR(255)"
+                    + "description VARCHAR(255),"
+                    + "image_path VARCHAR(255) DEFAULT NULL"
                     + ")";
             statement.executeUpdate(createFoodItems);
 
+            // REQUESTS Table (Cart checkout saves here)
             String createRequests = "CREATE TABLE IF NOT EXISTS requests ("
                     + "id INT AUTO_INCREMENT PRIMARY KEY,"
                     + "user_id INT NOT NULL,"

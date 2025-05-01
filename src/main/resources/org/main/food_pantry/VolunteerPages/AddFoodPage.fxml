@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+<VBox alignment="CENTER" spacing="15" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="org.main.food_pantry.Controllers.VolunteerControllers.AddFoodController" style="-fx-padding: 30;">
+
+    <Label text="Add New Food Item" style="-fx-font-size: 20px; -fx-font-weight: bold;" />
+
+    <TextField fx:id="nameField" promptText="Food Name" prefWidth="250"/>
+    <ComboBox fx:id="categoryComboBox" prefWidth="250" promptText="Select Category"/>
+    <TextField fx:id="quantityField" promptText="Quantity" prefWidth="250"/>
+    <DatePicker fx:id="expirationDatePicker" prefWidth="250"/>
+    <TextArea fx:id="descriptionArea" promptText="Description" prefWidth="250" prefHeight="100"/>
+
+    <!-- Image upload section -->
+    <HBox spacing="10" alignment="CENTER">
+        <Button fx:id="uploadImageBtn" text="Upload Image" onAction="#handleUploadImage"/>
+        <Label fx:id="imageFileNameLabel" text="No image selected"/>
+    </HBox>
+
+    <VBox spacing="10" alignment="CENTER">
+        <Button text="Submit" onAction="#handleSubmit" prefWidth="100"/>
+        <Button text="Cancel" onAction="#handleCancel" prefWidth="100"/>
+    </VBox>
+
+</VBox>

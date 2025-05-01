@@ -4,9 +4,13 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.stage.Stage;
-import org.main.food_pantry.Users.*;
+import org.main.food_pantry.Databases.CurrentUser;
+import org.main.food_pantry.Databases.Database;
 
-import java.net.URL;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 
 public class LoginPageController {
     @FXML private TextField usernameField;
@@ -16,31 +20,45 @@ public class LoginPageController {
 
     @FXML
     private void handleLogin() {
-        String username = usernameField.getText().trim();
-        String password = passwordField.getText().trim();
+        String usernameInput = usernameField.getText().trim();
+        String passwordInput = passwordField.getText().trim();
 
-        User user = UserDAO.loginUser(username, password);
-        if (user != null) {
+        String sql = "SELECT * FROM users WHERE username = ? AND password = ?";
 
-            Stage stage = (Stage) usernameField.getScene().getWindow();
-            URL url = SceneManager.class.getResource("/org/main/food_pantry/student-page.fxml");
-            System.out.println("FXML URL: " + url);
+        try (Connection conn = Database.getConnection();
+             PreparedStatement stmt = conn.prepareStatement(sql)) {
 
+            stmt.setString(1, usernameInput);
+            stmt.setString(2, passwordInput);
 
+            ResultSet rs = stmt.executeQuery();
 
-            switch (user.getRole()) {
-                case "Student":
-                    SceneManager.switchScene(stage, "/org/main/food_pantry/student-page.fxml");
-                    break;
-                case "Volunteer":
-                    SceneManager.switchScene(stage, "/org/main/food_pantry/volunteer-page.fxml");
-                    break;
-                case "Admin":
-                    SceneManager.switchScene(stage, "/org/main/food_pantry/admin-page.fxml");
-                    break;
+            if (rs.next()) {
+                // Extract user info from DB
+                int userId = rs.getInt("id");
+                String name = rs.getString("name");
+                String username = rs.getString("username");
+                String role = rs.getString("role");
+
+                // Store logged-in user globally
+                CurrentUser.setUser(userId, name, username, role);
+
+                // Navigate to appropriate page
+                Stage stage = (Stage) usernameField.getScene().getWindow();
+
+                switch (role.toLowerCase()) {
+                    case "student" -> SceneManager.switchScene(stage, "/org/main/food_pantry/StudentPages/student-page.fxml");
+                    case "volunteer" -> SceneManager.switchScene(stage, "/org/main/food_pantry/VolunteerPages/volunteer-page.fxml");
+                    case "admin" -> SceneManager.switchScene(stage, "/org/main/food_pantry/AdminPages/admin-page.fxml"); // Adjust if needed
+                    default -> showAlert("Unknown role", "Your account has no valid role assigned.");
+                }
+            } else {
+                statusLabel.setText("Invalid username or password.");
             }
-        } else {
-            statusLabel.setText("Invalid username or password.");
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+            statusLabel.setText("Database error. Try again later.");
         }
     }
 
@@ -48,5 +66,13 @@ public class LoginPageController {
     void handleSignup(ActionEvent event) {
         Stage stage = (Stage) signUpBtn.getScene().getWindow();
         SceneManager.switchScene(stage, "/org/main/food_pantry/create-account-page.fxml");
+    }
+
+    private void showAlert(String title, String message) {
+        Alert alert = new Alert(Alert.AlertType.ERROR);
+        alert.setTitle(title);
+        alert.setHeaderText(null);
+        alert.setContentText(message);
+        alert.showAndWait();
     }
 }
