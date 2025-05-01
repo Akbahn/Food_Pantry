@@ -8,7 +8,7 @@ A desktop-based JavaFX application that allows students to request food, volunte
 | Name            | Role / Contribution                                   |
 |-----------------|-------------------------------------------------------|
 | Hyder Akbar     | Full-Stack Developer, Database Integration, JavaFX UI |
-| [Add Name Here] | [e.g. Inventory Management, Request Logic]            |
+| [Catherine Parveez] | [Software Developer, Tech Support, Scribe]            |
 | [Add Name Here] | [e.g. Admin Dashboard, Analytics]                     |
 | [Add Name Here] | [e.g. UX Design, Scene Builder Layouts]               |
 | [Add Name Here] | [e.g. UX Design, Scene Builder Layouts]               |
