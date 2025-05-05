@@ -1,5 +1,6 @@
 package org.main.food_pantry.Controllers;
 
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.stage.Stage;
@@ -12,6 +13,7 @@ public class CreateAccountController {
     @FXML private PasswordField passwordField;
     @FXML private ComboBox<String> roleComboBox;
     @FXML private Label statusLabel;
+    @FXML private Button backBtn;
 
     @FXML
     public void initialize() {
@@ -40,4 +42,11 @@ public class CreateAccountController {
             statusLabel.setText("❌ Username already exists or error occurred.");
         }
     }
+
+    @FXML
+    void goBack(ActionEvent event) {
+        Stage stage = (Stage) ((javafx.scene.Node) event.getSource()).getScene().getWindow();
+        SceneManager.switchScene(stage, "/org/main/food_pantry/splash-screen.fxml");
+    }
+
 }

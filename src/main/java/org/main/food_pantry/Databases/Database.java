@@ -25,7 +25,7 @@ public class Database {
             statement.executeUpdate("CREATE DATABASE IF NOT EXISTS `" + DB_NAME + "`");
             statement.close();
             conn.close();
-            System.out.println("✅ Database created or already exists.");
+            System.out.println("Database created or already exists.");
 
             // Step 2: Connect to the new DB
             conn = getConnection();
@@ -68,7 +68,7 @@ public class Database {
                     + ")";
             statement.executeUpdate(createRequests);
 
-            System.out.println("✅ All tables created or already exist.");
+            System.out.println("All tables created or already exist.");
 
             // Step 4: Check if users exist
             ResultSet resultSet = statement.executeQuery("SELECT COUNT(*) FROM users");
@@ -81,7 +81,7 @@ public class Database {
             conn.close();
 
         } catch (Exception e) {
-            System.out.println("❌ Setup failed:");
+            System.out.println("Setup failed:");
             e.printStackTrace();
         }
 
@@ -91,6 +91,6 @@ public class Database {
     // Optional main method to trigger setup manually
     public static void main(String[] args) {
         boolean hasUsers = initializeDatabase();
-        System.out.println("✅ Setup complete. Users exist? " + hasUsers);
+        System.out.println("Setup complete. Users exist? " + hasUsers);
     }
 }

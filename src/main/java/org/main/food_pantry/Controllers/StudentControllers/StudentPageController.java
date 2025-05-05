@@ -6,8 +6,11 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.MenuItem;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
+import org.main.food_pantry.Controllers.SceneManager;
 import org.main.food_pantry.Databases.CurrentUser;
 import org.main.food_pantry.Items.FoodCategory;
 
@@ -29,6 +32,11 @@ public class StudentPageController {
     @FXML private Button historyBtn;
     @FXML private Button pendingBtn;
     @FXML private Button searchBtn;
+    @FXML private MenuItem aboutMenu;
+    @FXML private MenuItem closeMenu;
+    @FXML private MenuItem signOutMenu;
+    @FXML private BorderPane rootPane;
+
 
     @FXML
     void goToPending(ActionEvent event) {
@@ -39,6 +47,31 @@ public class StudentPageController {
     void goToHistory(ActionEvent event) {
         openRequestPage(false);
     }
+
+    @FXML
+    void closeApp(ActionEvent event) {
+        System.exit(0);
+    }
+
+
+    @FXML
+    void goHome(ActionEvent event) {
+        // Clear the logged-in user data
+        CurrentUser.clear();
+
+        // Switch to the splash screen
+        Stage stage = (Stage) rootPane.getScene().getWindow();
+        SceneManager.switchScene(stage, "/org/main/food_pantry/splash-page.fxml");
+    }
+
+
+
+    @FXML
+    void showProfile(ActionEvent event) {
+        Stage stage = (Stage) ((javafx.scene.Node) event.getSource()).getScene().getWindow();
+        SceneManager.switchScene(stage, "/org/main/food_pantry/student-profile.fxml"); // TODO: Need to add student profile
+    }
+
 
     private void openRequestPage(boolean pendingOnly) {
         try {

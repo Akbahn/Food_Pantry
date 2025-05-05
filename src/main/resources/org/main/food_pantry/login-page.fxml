@@ -14,6 +14,7 @@
    <PasswordField fx:id="passwordField" promptText="Password" />
    <HBox alignment="CENTER" prefHeight="25.0" prefWidth="435.0">
       <children>
+         <Button fx:id="backBtn" mnemonicParsing="false" onAction="#goBack" text="Back" />
          <Button onAction="#handleLogin" text="Login">
             <HBox.margin>
                <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />

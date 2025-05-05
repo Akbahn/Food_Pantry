@@ -17,6 +17,7 @@ public class LoginPageController {
     @FXML private PasswordField passwordField;
     @FXML private Label statusLabel;
     @FXML private Button signUpBtn;
+    @FXML private Button backBtn;
 
     @FXML
     private void handleLogin() {
@@ -74,5 +75,12 @@ public class LoginPageController {
         alert.setHeaderText(null);
         alert.setContentText(message);
         alert.showAndWait();
+    }
+
+    @FXML
+    void goBack(ActionEvent event) {
+        Stage stage = (Stage) ((javafx.scene.Node) event.getSource()).getScene().getWindow();
+        SceneManager.switchScene(stage, "/org/main/food_pantry/splash-page.fxml");
+
     }
 }
