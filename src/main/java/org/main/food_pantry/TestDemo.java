@@ -4,7 +4,7 @@ import org.main.food_pantry.Users.Student;
 import org.main.food_pantry.Users.User;
 import org.main.food_pantry.Databases.UserDAO;
 
-public class Main {
+public class TestDemo {
     public static void main(String[] args) {
         User newStudent = new Student(0, "Alice Johnson", "alice123", "alicepass");
         int id = UserDAO.registerUser(newStudent);

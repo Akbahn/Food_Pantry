@@ -3,18 +3,17 @@ package org.main.food_pantry.Controllers.VolunteerControllers;
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleObjectProperty;
 import javafx.beans.property.SimpleStringProperty;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Alert;
-import javafx.scene.control.ButtonType;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
+import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
+import org.main.food_pantry.Controllers.SceneManager;
 import org.main.food_pantry.Items.Food;
 import org.main.food_pantry.Databases.FoodDAO;
 
@@ -35,6 +34,8 @@ public class ManageInventoryController {
     private TableColumn<Food, String> descriptionColumn;
     @FXML
     private TableColumn<Food, ImageView> imageColumn;
+    @FXML
+    private Button backBtn;
 
 
     @FXML
@@ -64,8 +65,6 @@ public class ManageInventoryController {
 
             return new javafx.beans.property.SimpleObjectProperty<>(imgView);
         });
-
-
         refreshFoodTable();
     }
 
@@ -182,7 +181,6 @@ public class ManageInventoryController {
     }
 
 
-
     private void showAlert(Alert.AlertType alertType, String message) {
         Alert alert = new Alert(alertType);
         alert.setHeaderText(null);
@@ -194,6 +192,12 @@ public class ManageInventoryController {
         var foods = FoodDAO.getAllFoods();
         System.out.println("Foods loaded: " + foods.size()); // Debug log
         foodTable.setItems(foods);
+    }
+
+    @FXML
+    void goBack(ActionEvent event) {
+        Stage stage = (Stage) ((javafx.scene.Node) event.getSource()).getScene().getWindow();
+        SceneManager.switchScene(stage, "/org/main/food_pantry/VolunteerPages/volunteer-page.fxml");
     }
 
 }

@@ -1,42 +1,40 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
-<?import javafx.scene.control.cell.PropertyValueFactory?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
-<BorderPane prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1"
-            fx:controller="org.main.food_pantry.Controllers.VolunteerControllers.ManageInventoryController">
+<BorderPane prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.main.food_pantry.Controllers.VolunteerControllers.ManageInventoryController">
 
     <top>
-        <Label text="Manage Inventory" style="-fx-font-size: 24px; -fx-font-weight: bold;" BorderPane.alignment="CENTER" />
+        <Label style="-fx-font-size: 24px; -fx-font-weight: bold;" text="Manage Inventory" BorderPane.alignment="CENTER" />
     </top>
 
     <center>
-        <VBox spacing="20" alignment="TOP_CENTER" style="-fx-padding: 20;">
+        <VBox alignment="TOP_CENTER" spacing="20" style="-fx-padding: 20;">
             <children>
 
                 <TableView fx:id="foodTable" prefWidth="600">
                     <columns>
-                        <TableColumn fx:id="imageColumn" text="Image" prefWidth="100"/>
-                        <TableColumn fx:id="nameColumn" text="Name" prefWidth="100"/>
-                        <TableColumn fx:id="categoryColumn" text="Category" prefWidth="100"/>
-                        <TableColumn fx:id="quantityColumn" text="Quantity" prefWidth="100"/>
-                        <TableColumn fx:id="expirationColumn" text="Expires" prefWidth="100"/>
-                        <TableColumn fx:id="descriptionColumn" text="Description" prefWidth="100"/>
+                        <TableColumn fx:id="imageColumn" prefWidth="100" text="Image" />
+                        <TableColumn fx:id="nameColumn" prefWidth="100" text="Name" />
+                        <TableColumn fx:id="categoryColumn" prefWidth="100" text="Category" />
+                        <TableColumn fx:id="quantityColumn" prefWidth="100" text="Quantity" />
+                        <TableColumn fx:id="expirationColumn" prefWidth="100" text="Expires" />
+                        <TableColumn fx:id="descriptionColumn" prefWidth="100" text="Description" />
                     </columns>
                 </TableView>
 
 
-                <HBox spacing="20" alignment="CENTER">
-                    <Button fx:id="addFoodBtn" text="Add Food" onAction="#handleAddFood" prefWidth="120"/>
-                    <Button fx:id="updateFoodBtn" text="Update Food" onAction="#handleUpdateFood" prefWidth="120"/>
-                    <Button fx:id="deleteFoodBtn" text="Delete Food" onAction="#handleDeleteFood" prefWidth="120"/>
+                <HBox alignment="CENTER" spacing="20">
+               <Button fx:id="backBtn" mnemonicParsing="false" onAction="#goBack" prefHeight="26.0" prefWidth="120.0" text="Back" />
+                    <Button fx:id="addFoodBtn" onAction="#handleAddFood" prefWidth="120" text="Add Food" />
+                    <Button fx:id="updateFoodBtn" onAction="#handleUpdateFood" prefWidth="120" text="Update Food" />
+                    <Button fx:id="deleteFoodBtn" onAction="#handleDeleteFood" prefWidth="120" text="Delete Food" />
                 </HBox>
 
             </children>
