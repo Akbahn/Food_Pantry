@@ -1,6 +1,19 @@
+
+
+@font-face {
+    font-family: 'Montserrat';
+    src: url('/font/Montserrat-VariableFont_wght.ttf');
+}
+
+.your-style {
+    -fx-font-family: 'Montserrat';
+}
+
+
 .root {
     -fx-background-color: #f4f4f4; /* soft white */
 }
+
 
 .button {
     -fx-background-color: #4CAF50; /* green */
@@ -25,4 +38,6 @@
 .info-box {
     -fx-background-color: #A1887F; /* medium brown */
     -fx-text-fill: white;
+
+
 }

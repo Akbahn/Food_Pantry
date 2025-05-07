@@ -12,20 +12,22 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="780.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.main.food_pantry.Controllers.SplashPageController">
    <children>
+      <ImageView fitHeight="853.0" fitWidth="1331.0" layoutX="2.0" layoutY="-40.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@Images/page1background.png" />
+         </image>
+      </ImageView>
       <VBox alignment="TOP_CENTER" layoutX="590.0" layoutY="270.0" prefHeight="219.0" prefWidth="860.0" AnchorPane.bottomAnchor="461.0" AnchorPane.leftAnchor="210.0" AnchorPane.rightAnchor="210.0" AnchorPane.topAnchor="100.0">
          <children>
+            <AnchorPane prefHeight="200.0" prefWidth="200.0" />
             <ImageView fitHeight="220.0" fitWidth="220.0" pickOnBounds="true" preserveRatio="true">
-               <VBox.margin>
-                  <Insets />
-
-               </VBox.margin>
                <image>
                   <Image url="@Images/FarmingdaleLogo.png" />
                </image>
             </ImageView>
          </children>
       </VBox>
-      <VBox alignment="TOP_CENTER" layoutX="306.0" layoutY="332.0" prefHeight="128.0" prefWidth="668.0">
+      <VBox alignment="TOP_CENTER" layoutX="277.0" layoutY="314.0" prefHeight="128.0" prefWidth="668.0">
          <children>
             <Label prefHeight="39.0" prefWidth="198.0" text="   Welcome to">
                <font>

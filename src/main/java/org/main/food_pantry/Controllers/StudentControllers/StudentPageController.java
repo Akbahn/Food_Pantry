@@ -75,7 +75,7 @@ public class StudentPageController {
 
     private void openRequestPage(boolean pendingOnly) {
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/org/main/food_pantry/StudentPages/StudentRequestPage.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/org/main/food_pantry/mainpage/StudentRequestPage.fxml"));
             Parent root = loader.load();
 
             StudentRequestPageController controller = loader.getController();
@@ -114,7 +114,7 @@ public class StudentPageController {
 
     private void openFoodList(FoodCategory category) {
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/org/main/food_pantry/StudentPages/FoodListPage.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/org/main/food_pantry/mainpage/FoodListPage.fxml"));
             Parent root = loader.load();
 
             FoodListPageController controller = loader.getController();

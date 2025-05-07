@@ -52,9 +52,11 @@ public class LoginPageController {
 
                 // Navigate to appropriate page
                 Stage stage = (Stage) usernameField.getScene().getWindow();
+                //scene.getStylesheets().add(getClass().getResource("/style.css").toExternalForm()); for the font
+
 
                 switch (role) {
-                    case "student" -> SceneManager.switchScene(stage, "/org/main/food_pantry/StudentPages/student-page.fxml");
+                    case "student" -> SceneManager.switchScene(stage, "/org/main/food_pantry/mainpage/student-page.fxml");
                    // case "volunteer" -> SceneManager.switchScene(stage, "/org/main/food_pantry/VolunteerPages/volunteer-page.fxml");
                     case "admin" -> SceneManager.switchScene(stage, "/org/main/food_pantry/AdminPages/admin-page.fxml"); // Adjust if needed
                     default -> showAlert("Unknown role", "Your account has no valid role assigned.");
@@ -70,7 +72,7 @@ public class LoginPageController {
     }
 
     @FXML
-    void handleSignup(ActionEvent event) {
+    void handleSignUp(ActionEvent event) {
         Stage stage = (Stage) signUpBtn.getScene().getWindow();
         SceneManager.switchScene(stage, "/org/main/food_pantry/create-account-page.fxml");
     }
@@ -87,4 +89,5 @@ public class LoginPageController {
         Stage stage = (Stage) ((Button) event.getSource()).getScene().getWindow();
     SceneManager.switchScene(stage, "/org/main/food_pantry/splash-page.fxml");
     }
+
 }
