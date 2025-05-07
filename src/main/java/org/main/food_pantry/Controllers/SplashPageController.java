@@ -19,6 +19,25 @@ import java.util.stream.Collectors;
 
 public class SplashPageController {
 
+    @FXML
+    private Button LoginBtn;
+
+    @FXML
+    private Button signUpBtn;
+
+    @FXML
+    void goToLoginPage(ActionEvent event) {
+        Stage stage = (Stage) LoginBtn.getScene().getWindow();
+        SceneManager.switchScene(stage, "/org/main/food_pantry/login-page.fxml");
+
+    }
+
+    @FXML
+    void goToSignUpPage(ActionEvent event) {
+        Stage stage = (Stage) signUpBtn.getScene().getWindow();
+        SceneManager.switchScene(stage, "/org/main/food_pantry/create-account-page.fxml");
+    }
+
  /*   @FXML
     private ListView<String> requestedItemList;
 
@@ -61,16 +80,18 @@ public class SplashPageController {
         Stage stage = (Stage) signUpBtn.getScene().getWindow();
         SceneManager.switchScene(stage, "/org/main/food_pantry/create-account-page.fxml");
     }
-    */
+
+ ----- Nia's code ----
+
 @FXML
 private void handleStudent(ActionEvent event) throws IOException {
-    /*
+    //
     Parent StudentPage = FXMLLoader.load(getClass().getResource("splash-page.fxml"));
     Scene studentScene = new Scene(StudentPage);
     Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
     stage.setScene(studentScene);
     stage.show();
-     */
+     //
     CurrentUser.setTempRole("student");
     Stage stage=(Stage) ((Node) event.getSource()).getScene().getWindow();
     SceneManager.switchScene(stage,"/org/main/food_pantry/login-page.fxml");
@@ -83,6 +104,7 @@ private void handleStudent(ActionEvent event) throws IOException {
     SceneManager.switchScene(stage,"/org/main/food_pantry/login-page.fxml");
 
 }
+    */
 
 
 }

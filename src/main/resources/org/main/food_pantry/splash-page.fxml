@@ -57,7 +57,7 @@
       </VBox>
       <HBox alignment="CENTER" layoutX="447.0" layoutY="527.0" prefHeight="81.0" prefWidth="415.0">
          <children>
-            <Button fx:id="studentButton" mnemonicParsing="false" onAction="#handleStudent" text="I am a student">
+            <Button fx:id="LoginBtn" mnemonicParsing="false" onAction="#goToLoginPage" text="Login">
                <font>
                   <Font size="22.0" />
                </font>
@@ -65,7 +65,7 @@
                   <Insets right="10.0" />
                </HBox.margin>
             </Button>
-            <Button fx:id="adminButton" mnemonicParsing="false" onAction="#handleAdmin" text="I am an admin">
+            <Button fx:id="signUpBtn" mnemonicParsing="false" onAction="#goToSignUpPage" text="Sign Up">
                <font>
                   <Font size="22.0" />
                </font>
