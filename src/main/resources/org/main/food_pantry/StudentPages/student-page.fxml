@@ -38,9 +38,9 @@
                 </Menu>
               </menus>
             </MenuBar>
-            <ImageView fx:id="cartImage" fitHeight="29.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="cartIcon" fitHeight="29.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../Images/icons8-cart-30.png" />
+                   <Image url="@/org/main/food_pantry/images/cartIcon.png" />
                </image>
             </ImageView>
          </children>
@@ -52,7 +52,7 @@
         <VBox alignment="TOP_CENTER" spacing="15" style="-fx-padding: 10;">
             <ImageView fx:id="profileImageView" fitHeight="150" fitWidth="150">
             <image>
-               <Image url="@../Images/icons8-profile-picture-24.png" />
+                <Image url="@/org/main/food_pantry/images/profilepictureIcon.png" />
             </image></ImageView>
             <Button fx:id="searchBtn" onAction="#goToSearch" prefHeight="26.0" prefWidth="101.0" text="Search" />
             <Button fx:id="pendingBtn" onAction="#goToPending" prefHeight="26.0" prefWidth="106.0" text="Pending" />
@@ -67,37 +67,37 @@
 
             <FlowPane alignment="CENTER" hgap="20" vgap="20">
                 <VBox alignment="CENTER">
-                    <ImageView fx:id="dairyImage" fitHeight="100" fitWidth="100" style="-fx-border-color: black; -fx-border-radius: 50%;">
+                    <ImageView fx:id="dairyIcon2" fitHeight="100" fitWidth="100" style="-fx-border-color: black; -fx-border-radius: 50%;">
                   <image>
-                      <Image url="@/org/main/food_pantry/Images/Food Category/icons8-dairy-50.png" />
+                      <Image url="@/org/main/food_pantry/images/dairyIcon2.png" />
                   </image></ImageView>
                     <Label text="Dairy" />
                 </VBox>
                 <VBox alignment="CENTER">
-                    <ImageView fx:id="drinkImage" fitHeight="100" fitWidth="100" style="-fx-border-color: black; -fx-border-radius: 50%;">
+                    <ImageView fx:id="drinkIcon" fitHeight="100" fitWidth="100" style="-fx-border-color: black; -fx-border-radius: 50%;">
                   <image>
-                     <Image url="@/org/main/food_pantry/Images/Food Category/icons8-drink-50.png" />
+                     <Image url="@/org/main/food_pantry/images/DrinkIcon.png" />
                   </image></ImageView>
                     <Label text="Drink" />
                 </VBox>
                 <VBox alignment="CENTER">
-                    <ImageView fx:id="FruitImage" fitHeight="100" fitWidth="100" style="-fx-border-color: black; -fx-border-radius: 50%;">
+                    <ImageView fx:id="FruitIcon" fitHeight="100" fitWidth="100" style="-fx-border-color: black; -fx-border-radius: 50%;">
                   <image>
-                     <Image url="@/org/main/food_pantry/Images/Food Category/icons8-fruit-50.png" />
+                     <Image url="@/org/main/food_pantry/images/fruitIcon.png" />
                   </image></ImageView>
                     <Label text="Fruit" />
                 </VBox>
                 <VBox alignment="CENTER">
-                    <ImageView fx:id="grainImage" fitHeight="100" fitWidth="100" style="-fx-border-color: black; -fx-border-radius: 50%;">
+                    <ImageView fx:id="grainIcon" fitHeight="100" fitWidth="100" style="-fx-border-color: black; -fx-border-radius: 50%;">
                   <image>
-                     <Image url="@/org/main/food_pantry/Images/Food Category/icons8-grain-50.png" />
+                     <Image url="@/org/main/food_pantry/images/grainIcon.png" />
                   </image></ImageView>
                     <Label text="Grain" />
                 </VBox>
                 <VBox alignment="CENTER">
-                    <ImageView fx:id="meatImage" fitHeight="100" fitWidth="100" style="-fx-border-color: black; -fx-border-radius: 50%;">
+                    <ImageView fx:id="meatIcon" fitHeight="100" fitWidth="100" style="-fx-border-color: black; -fx-border-radius: 50%;">
                   <image>
-                     <Image url="@/org/main/food_pantry/Images/Food Category/icons8-meat-50.png" />
+                     <Image url="@/org/main/food_pantry/images/meatIcon.png" />
                   </image></ImageView>
                     <Label text="Meat" />
                 </VBox>
@@ -106,9 +106,9 @@
             <children>
                <VBox alignment="CENTER">
                   <children>
-                     <ImageView fx:id="snackImage" fitHeight="100" fitWidth="100" style="-fx-border-color: black; -fx-border-radius: 50%;">
+                     <ImageView fx:id="snackIcon" fitHeight="100" fitWidth="100" style="-fx-border-color: black; -fx-border-radius: 50%;">
                         <image>
-                           <Image url="@/org/main/food_pantry/Images/Food Category/icons8-snack-50.png" />
+                           <Image url="@/org/main/food_pantry/images/snackIcon.png" />
                         </image>
                      </ImageView>
                      <Label text="Snack" />
@@ -116,9 +116,9 @@
                </VBox>
                <VBox alignment="CENTER">
                   <children>
-                     <ImageView fx:id="vegImage" fitHeight="100" fitWidth="100" style="-fx-border-color: black; -fx-border-radius: 50%;">
+                     <ImageView fx:id="vegetableIcon" fitHeight="100" fitWidth="100" style="-fx-border-color: black; -fx-border-radius: 50%;">
                         <image>
-                           <Image url="@/org/main/food_pantry/Images/Food Category/icons8-vegetables-48.png" />
+                           <Image url="@/org/main/food_pantry/images/vegetableIcon.png" />
                         </image>
                      </ImageView>
                      <Label text="Vegetables" />
@@ -126,9 +126,9 @@
                </VBox>
                <VBox alignment="CENTER">
                   <children>
-                     <ImageView fx:id="otherImage" fitHeight="100" fitWidth="100" style="-fx-border-color: black; -fx-border-radius: 50%;">
+                     <ImageView fx:id="otherIcon" fitHeight="100" fitWidth="100" style="-fx-border-color: black; -fx-border-radius: 50%;">
                         <image>
-                           <Image url="@/org/main/food_pantry/Images/Food Category/icons8-other-50.png" />
+                           <Image url="@/org/main/food_pantry/images/otherIcon.png" />
                         </image>
                      </ImageView>
                      <Label text="Others" />

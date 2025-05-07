@@ -52,7 +52,7 @@ public class ManageInventoryController {
             try {
                 if (imagePath != null && !imagePath.isEmpty()) {
                     Image image = new Image(getClass().getResourceAsStream(
-                            "/org/main/food_pantry/Images/FoodItems/" + imagePath));
+                            "/food_pantry/Images/FoodItems/" + imagePath));
                     imgView.setImage(image);
                 }
             } catch (Exception e) {

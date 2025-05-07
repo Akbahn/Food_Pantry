@@ -13,11 +13,12 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class LoginPageController {
+    //nia
+
     @FXML private TextField usernameField;
     @FXML private PasswordField passwordField;
     @FXML private Label statusLabel;
     @FXML private Button signUpBtn;
-    @FXML private Button backBtn;
 
     @FXML
     private void handleLogin() {
@@ -39,7 +40,12 @@ public class LoginPageController {
                 int userId = rs.getInt("id");
                 String name = rs.getString("name");
                 String username = rs.getString("username");
-                String role = rs.getString("role");
+                //String role = rs.getString("role");
+                String role=rs.getString("role").toLowerCase();
+
+                //String selectedRole=CurrentUser.getTempRole();
+
+
 
                 // Store logged-in user globally
                 CurrentUser.setUser(userId, name, username, role);
@@ -47,9 +53,9 @@ public class LoginPageController {
                 // Navigate to appropriate page
                 Stage stage = (Stage) usernameField.getScene().getWindow();
 
-                switch (role.toLowerCase()) {
+                switch (role) {
                     case "student" -> SceneManager.switchScene(stage, "/org/main/food_pantry/StudentPages/student-page.fxml");
-                    case "volunteer" -> SceneManager.switchScene(stage, "/org/main/food_pantry/VolunteerPages/volunteer-page.fxml");
+                   // case "volunteer" -> SceneManager.switchScene(stage, "/org/main/food_pantry/VolunteerPages/volunteer-page.fxml");
                     case "admin" -> SceneManager.switchScene(stage, "/org/main/food_pantry/AdminPages/admin-page.fxml"); // Adjust if needed
                     default -> showAlert("Unknown role", "Your account has no valid role assigned.");
                 }
@@ -76,11 +82,9 @@ public class LoginPageController {
         alert.setContentText(message);
         alert.showAndWait();
     }
-
     @FXML
-    void goBack(ActionEvent event) {
-        Stage stage = (Stage) ((javafx.scene.Node) event.getSource()).getScene().getWindow();
-        SceneManager.switchScene(stage, "/org/main/food_pantry/splash-page.fxml");
-
+    private void handleBackButton(ActionEvent event) {
+        Stage stage = (Stage) ((Button) event.getSource()).getScene().getWindow();
+    SceneManager.switchScene(stage, "/org/main/food_pantry/splash-page.fxml");
     }
 }

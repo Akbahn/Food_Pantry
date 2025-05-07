@@ -1,0 +1,28 @@
+.root {
+    -fx-background-color: #f4f4f4; /* soft white */
+}
+
+.button {
+    -fx-background-color: #4CAF50; /* green */
+    -fx-text-fill: white;
+    -fx-font-size: 10px;
+    -fx-background-radius: 8px;
+    -fx-padding: 10 10;
+}
+
+.button:hover {
+    -fx-background-color: #388E3C; /* darker green on hover */
+}
+
+.menu-box {
+    -fx-background-color: #D7CCC8; /* light brown */
+}
+
+.center-box {
+    -fx-background-color: white;
+}
+
+.info-box {
+    -fx-background-color: #A1887F; /* medium brown */
+    -fx-text-fill: white;
+}

@@ -50,15 +50,15 @@ public class FoodListPageController {
     private Image getCategoryImage(FoodCategory category) {
         String path;
         switch (category) {
-            case DAIRY -> path = "/org/main/food_pantry/Images/FoodCategory/icons8-dairy-50.png";
-            case MEAT -> path = "/org/main/food_pantry/Images/FoodCategory/icons8-meat-50.png";
-            case VEGETABLES -> path = "/org/main/food_pantry/Images/FoodCategory/icons8-vegetables-48.png";
-            case FRUITS -> path = "/org/main/food_pantry/Images/FoodCategory/icons8-fruit-50.png";
-            case BEVERAGES -> path = "/org/main/food_pantry/Images/FoodCategory/icons8-drink-50.png";
-            case GRAINS -> path = "/org/main/food_pantry/Images/FoodCategory/icons8-grain-50.png";
-            case SNACKS -> path = "/org/main/food_pantry/Images/FoodCategory/icons8-snack-50.png";
-            case OTHER -> path = "/org/main/food_pantry/Images/FoodCategory/icons8-other-50.png";
-            default -> path = "/org/main/food_pantry/Images/FoodCategory/icons8-other-50.png";
+            case DAIRY -> path = "/food_pantry/Images/FoodCategory/icons8-dairy-50.png";
+            case MEAT -> path = "/food_pantry/Images/FoodCategory/icons8-meat-50.png";
+            case VEGETABLES -> path = "/food_pantry/Images/FoodCategory/icons8-vegetables-48.png";
+            case FRUITS -> path = "/food_pantry/Images/FoodCategory/icons8-fruit-50.png";
+            case BEVERAGES -> path = "/food_pantry/Images/FoodCategory/icons8-drink-50.png";
+            case GRAINS -> path = "/food_pantry/Images/FoodCategory/icons8-grain-50.png";
+            case SNACKS -> path = "/food_pantry/Images/FoodCategory/icons8-snack-50.png";
+            case OTHER -> path = "/food_pantry/Images/FoodCategory/icons8-other-50.png";
+            default -> path = "/food_pantry/Images/FoodCategory/icons8-other-50.png";
         }
 
         return new Image(Objects.requireNonNull(getClass().getResourceAsStream(path)));
@@ -98,7 +98,7 @@ public class FoodListPageController {
         if (imagePath != null && !imagePath.isEmpty()) {
             try {
                 // Ensure that the image path is correctly passed relative to resources
-                image = new Image(getClass().getResourceAsStream("/org/main/food_pantry/Images/FoodItems/" + imagePath));
+                image = new Image(getClass().getResourceAsStream("/food_pantry/Images/FoodItems/" + imagePath));
                 if (image.isError()) throw new Exception("Image failed to load.");
             } catch (Exception e) {
                 System.out.println("⚠ Could not load food image: " + imagePath + " → using default.");

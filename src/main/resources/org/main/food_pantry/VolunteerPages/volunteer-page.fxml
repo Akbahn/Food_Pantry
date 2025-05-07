@@ -38,7 +38,7 @@
                 </MenuBar>
                 <ImageView fx:id="cartImage" fitHeight="29.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
                     <image>
-                        <Image url="@../Images/icons8-cart-30.png" />
+                        <Image url="@../../../../food_pantry/Images/icons8-cart-30.png" />
                     </image>
                 </ImageView>
 
@@ -52,7 +52,7 @@
             <children>
                 <ImageView fx:id="profileImageView" fitHeight="150" fitWidth="150">
                     <image>
-                        <Image url="@../Images/icons8-profile-picture-24.png" />
+                        <Image url="@../../../../food_pantry/Images/icons8-profile-picture-24.png" />
                     </image>
                 </ImageView>
                 <Button fx:id="manageInventoryBtn" onAction="#goToManageInventory" prefHeight="26.0" prefWidth="150.0" text="Manage Inventory" />

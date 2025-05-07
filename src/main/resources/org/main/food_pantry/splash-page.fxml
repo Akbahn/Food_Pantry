@@ -1,26 +1,77 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.ListView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
-<VBox alignment="CENTER" prefHeight="500" prefWidth="600" spacing="25" style="-fx-background-color: #f4f4f4; -fx-padding: 40;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.main.food_pantry.Controllers.SplashPageController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="780.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.main.food_pantry.Controllers.SplashPageController">
+   <children>
+      <VBox alignment="TOP_CENTER" layoutX="590.0" layoutY="270.0" prefHeight="219.0" prefWidth="860.0" AnchorPane.bottomAnchor="461.0" AnchorPane.leftAnchor="210.0" AnchorPane.rightAnchor="210.0" AnchorPane.topAnchor="100.0">
+         <children>
+            <ImageView fitHeight="220.0" fitWidth="220.0" pickOnBounds="true" preserveRatio="true">
+               <VBox.margin>
+                  <Insets />
 
-   <!-- App Title -->
-   <Label style="-fx-font-size: 28px; -fx-font-weight: bold; -fx-text-fill: #2c3e50;" text="School Food Pantry" />
-
-   <!-- Subheading -->
-   <Label style="-fx-font-size: 18px; -fx-font-weight: bold; -fx-text-fill: #555;" text="📦 Pantry Alert: Low Stock Items" />
-
-   <!-- List of low stock items -->
-   <ListView fx:id="requestedItemList" prefHeight="250" prefWidth="500" style="-fx-border-color: #ccc; -fx-background-radius: 8;" />
-
-   <!-- Buttons Row -->
-   <HBox alignment="CENTER" spacing="20">
-      <Button fx:id="loginBtn" onAction="#goToLoginPage" style="-fx-background-color: #007bff; -fx-text-fill: white; -fx-font-size: 14px; -fx-padding: 8 20; -fx-background-radius: 5;" text="Login" />
-      <Button fx:id="signUpBtn" onAction="#goToSignUpPage" style="-fx-background-color: #28a745; -fx-text-fill: white; -fx-font-size: 14px; -fx-padding: 8 20; -fx-background-radius: 5;" text="Sign Up" />
-   </HBox>
-
-</VBox>
+               </VBox.margin>
+               <image>
+                  <Image url="@Images/FarmingdaleLogo.png" />
+               </image>
+            </ImageView>
+         </children>
+      </VBox>
+      <VBox alignment="TOP_CENTER" layoutX="306.0" layoutY="332.0" prefHeight="128.0" prefWidth="668.0">
+         <children>
+            <Label prefHeight="39.0" prefWidth="198.0" text="   Welcome to">
+               <font>
+                  <Font size="32.0" />
+               </font>
+            </Label>
+            <Label text="Farmingdale State College">
+               <font>
+                  <Font size="32.0" />
+               </font>
+            </Label>
+            <Label text="Food Pantry">
+               <font>
+                  <Font size="32.0" />
+               </font>
+            </Label>
+         </children>
+      </VBox>
+      <VBox alignment="TOP_CENTER" layoutX="402.0" layoutY="464.0" prefHeight="54.0" prefWidth="487.0">
+         <children>
+            <Label text="Please select one">
+               <font>
+                  <Font size="26.0" />
+               </font>
+            </Label>
+         </children>
+      </VBox>
+      <HBox alignment="CENTER" layoutX="447.0" layoutY="527.0" prefHeight="81.0" prefWidth="415.0">
+         <children>
+            <Button fx:id="studentButton" mnemonicParsing="false" onAction="#handleStudent" text="I am a student">
+               <font>
+                  <Font size="22.0" />
+               </font>
+               <HBox.margin>
+                  <Insets right="10.0" />
+               </HBox.margin>
+            </Button>
+            <Button fx:id="adminButton" mnemonicParsing="false" onAction="#handleAdmin" text="I am an admin">
+               <font>
+                  <Font size="22.0" />
+               </font>
+               <HBox.margin>
+                  <Insets left="10.0" />
+               </HBox.margin>
+            </Button>
+         </children>
+      </HBox>
+   </children>
+</AnchorPane>

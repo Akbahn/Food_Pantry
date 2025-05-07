@@ -10,7 +10,14 @@ public class CurrentUser {
     private static String name;
     private static String username;
     private static String role; // Optional: "Student", "Volunteer", "Admin"
+    private static String tempRole;
+    public static void setTempRole(String selectedRole) {
+        tempRole=selectedRole;
 
+    }
+    public static String getTempRole() {
+        return tempRole;
+    }
     // Setters
     public static void setUser(int userId, String userName, String userUsername, String userRole) {
         id = userId;

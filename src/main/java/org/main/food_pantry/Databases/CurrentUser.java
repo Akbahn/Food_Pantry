@@ -4,6 +4,19 @@ package org.main.food_pantry.Databases;
  * Singleton-style utility to store the currently logged-in user's data.
  */
 public class CurrentUser {
+    private static String tempRole;
+
+    public static void setTempRole(String selectedRole) {
+        tempRole = selectedRole;
+    }
+    public static String getTempRole(){
+        return tempRole;
+    }
+    public static void clearTempRole(){
+        tempRole=null;
+    }
+
+
     private static int id;
     private static String name;
     private static String username;

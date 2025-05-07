@@ -2,6 +2,7 @@ module org.main.food_pantry {
     requires javafx.controls;
     requires javafx.fxml;
     requires java.sql;
+    requires java.desktop;
 
 
     opens org.main.food_pantry to javafx.fxml;
