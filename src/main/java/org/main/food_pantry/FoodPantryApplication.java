@@ -10,6 +10,7 @@ public class FoodPantryApplication extends Application {
 
     @Override
     public void start(Stage primaryStage) {
+        //test
         // Initialize the database first
         Database.initializeDatabase();
         try {
