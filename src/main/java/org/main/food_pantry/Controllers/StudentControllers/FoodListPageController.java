@@ -30,13 +30,15 @@ public class FoodListPageController {
     @FXML
     private Label categoryLabel;
 
-    @FXML
-    private Button checkoutBtn;
 
     private FoodCategory selectedCategory;
-    private List<Food> cart = new ArrayList<>();
 
 
+    private StudentPageController parentController;
+
+    public void setParentController(StudentPageController controller) {
+        this.parentController = controller;
+    }
 
     public void setCategory(FoodCategory category) {
         this.selectedCategory = category;
@@ -46,26 +48,28 @@ public class FoodListPageController {
     }
 
 
-
     private Image getCategoryImage(FoodCategory category) {
         String path;
         switch (category) {
-            case DAIRY -> path = "/food_pantry/Images/FoodCategory/icons8-dairy-50.png";
-            case MEAT -> path = "/food_pantry/Images/FoodCategory/icons8-meat-50.png";
-            case VEGETABLES -> path = "/food_pantry/Images/FoodCategory/icons8-vegetables-48.png";
-            case FRUITS -> path = "/food_pantry/Images/FoodCategory/icons8-fruit-50.png";
-            case BEVERAGES -> path = "/food_pantry/Images/FoodCategory/icons8-drink-50.png";
-            case GRAINS -> path = "/food_pantry/Images/FoodCategory/icons8-grain-50.png";
-            case SNACKS -> path = "/food_pantry/Images/FoodCategory/icons8-snack-50.png";
-            case OTHER -> path = "/food_pantry/Images/FoodCategory/icons8-other-50.png";
-            default -> path = "/food_pantry/Images/FoodCategory/icons8-other-50.png";
+            case DAIRY -> path = "/org/main/food_pantry/Images/FoodCategory/icons8-dairy-50.png";
+            case MEAT -> path = "/org/main/food_pantry/Images/FoodCategory/icons8-meat-50.png";
+            case VEGETABLES -> path = "/org/main/food_pantry/Images/FoodCategory/icons8-vegetables-48.png";
+            case FRUITS -> path = "/org/main/food_pantry/Images/FoodCategory/icons8-fruit-50.png";
+            case BEVERAGES -> path = "/org/main/food_pantry/Images/FoodCategory/icons8-drink-50.png";
+            case GRAINS -> path = "/org/main/food_pantry/Images/FoodCategory/icons8-grain-50.png";
+            case SNACKS -> path = "/org/main/food_pantry/Images/FoodCategory/icons8-snack-50.png";
+            case OTHER -> path = "/org/main/food_pantry/Images/FoodCategory/icons8-other-50.png";
+            default -> path = "/org/main/food_pantry/Images/FoodCategory/icons8-other-50.png";
         }
 
-        return new Image(Objects.requireNonNull(getClass().getResourceAsStream(path)));
+        var stream = getClass().getResourceAsStream(path);
+        if (stream == null) {
+            System.out.println("⚠ Could not find fallback category icon at: " + path);
+            return new Image("https://via.placeholder.com/100"); // fallback placeholder
+        }
+
+        return new Image(stream);
     }
-
-
-
 
     private void loadFoodItems() {
         foodFlowPane.getChildren().clear();
@@ -80,7 +84,6 @@ public class FoodListPageController {
             foodFlowPane.getChildren().add(card);
         }
     }
-
 
     private VBox createFoodCard(Food food) {
         VBox card = new VBox(10);
@@ -98,7 +101,7 @@ public class FoodListPageController {
         if (imagePath != null && !imagePath.isEmpty()) {
             try {
                 // Ensure that the image path is correctly passed relative to resources
-                image = new Image(getClass().getResourceAsStream("/food_pantry/Images/FoodItems/" + imagePath));
+                image = new Image(getClass().getResourceAsStream("/org/main/food_pantry/Images/FoodItems/" + imagePath));
                 if (image.isError()) throw new Exception("Image failed to load.");
             } catch (Exception e) {
                 System.out.println("⚠ Could not load food image: " + imagePath + " → using default.");
@@ -114,47 +117,15 @@ public class FoodListPageController {
 
         Button addToCartBtn = new Button("Add to Cart");
         addToCartBtn.setOnAction(e -> {
-            cart.add(food);
-            updateCheckoutButton();
+            if (parentController != null) {
+                parentController.addToCart(food);
+            }
         });
+
 
         card.getChildren().addAll(foodImage, foodName, addToCartBtn);
         return card;
     }
-
-
-
-
-    private void updateCheckoutButton() {
-        checkoutBtn.setText("Checkout (" + cart.size() + ")");
-    }
-
-    @FXML
-    private void handleCheckout() {
-        if (cart.isEmpty()) {
-            showAlert(Alert.AlertType.WARNING, "Cart is empty", "Please add items to cart before checkout.");
-            return;
-        }
-
-        int studentId = CurrentUser.getId(); // 👈 You must be storing this somewhere when the student logs in
-        System.out.println("User ID used for checkout: " + studentId);
-
-        for (Food food : cart) {
-            boolean success = RequestDAO.insertRequest(studentId, food.getId(), 1);
-
-            if (!success) {
-                showAlert(Alert.AlertType.ERROR, "Request Failed", "Could not submit request for: " + food.getName());
-                return;
-            }
-        }
-
-        cart.clear();
-        updateCheckoutButton();
-        loadFoodItems(); // Refreshes UI
-        showAlert(Alert.AlertType.INFORMATION, "Success", "Request submitted successfully!");
-    }
-
-
 
     private void showAlert(AlertType alertType, String title, String message) {
         Alert alert = new Alert(alertType);

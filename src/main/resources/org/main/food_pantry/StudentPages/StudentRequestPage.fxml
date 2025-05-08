@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.geometry.Pos?>
+
+<BorderPane xmlns="http://javafx.com/javafx/8"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="org.main.food_pantry.Controllers.StudentControllers.StudentRequestPageController"
+            style="-fx-background-color: #f9f9f9;">
+
+    <!-- Top Title Bar -->
+    <top>
+        <HBox alignment="CENTER_LEFT" spacing="10" style="-fx-background-color: #2e8b57; -fx-padding: 15;">
+            <Label fx:id="pageTitle"
+                   text="📦 My Requests"
+                   style="-fx-font-size: 22px; -fx-text-fill: white; -fx-font-weight: bold;" />
+        </HBox>
+    </top>
+
+    <!-- Table Center -->
+    <center>
+        <VBox alignment="CENTER" spacing="20" style="-fx-padding: 30;">
+            <Label text="Recent Food Requests"
+                   style="-fx-font-size: 16px; -fx-font-weight: bold;" />
+
+            <TableView fx:id="requestsTable"
+                       prefHeight="450"
+                       prefWidth="800"
+                       style="-fx-border-color: lightgray; -fx-border-radius: 5; -fx-background-radius: 5;">
+                <columns>
+                    <TableColumn fx:id="foodNameColumn" text="Food Item" prefWidth="250" />
+                    <TableColumn fx:id="quantityColumn" text="Quantity" prefWidth="100" />
+                    <TableColumn fx:id="statusColumn" text="Status" prefWidth="150" />
+                    <TableColumn fx:id="dateColumn" text="Request Date" prefWidth="250" />
+                </columns>
+            </TableView>
+        </VBox>
+    </center>
+
+</BorderPane>

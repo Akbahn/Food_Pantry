@@ -3,6 +3,8 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -10,64 +12,60 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"
-            prefHeight="780.0" prefWidth="1280.0"
-            xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml"
-            fx:controller="org.main.food_pantry.Controllers.LoginPageController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="780.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.main.food_pantry.Controllers.LoginPageController">
    <children>
       <!-- Background Image -->
-      <ImageView fitHeight="780.0" fitWidth="1280.0"
-                 AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0"
-                 AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0"
-                 pickOnBounds="true">
+      <ImageView fitHeight="780.0" fitWidth="1280.0" pickOnBounds="true" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <image>
             <Image url="@Images/mainbackground.png" />
          </image>
       </ImageView>
 
       <!-- White rectangle with rounded corners -->
-      <Rectangle arcHeight="20.0" arcWidth="20.0" fill="#ffffffe3"
-                 height="631.0" width="482.0"
-                 AnchorPane.leftAnchor="400.0" AnchorPane.rightAnchor="398.0"
-                 AnchorPane.topAnchor="70.0"
-                 smooth="false" stroke="#00751f" strokeLineCap="ROUND"
-                 strokeType="INSIDE" strokeWidth="2.0" />
+      <Rectangle arcHeight="20.0" arcWidth="20.0" fill="#ffffffe3" height="631.0" smooth="false" stroke="#00751f" strokeLineCap="ROUND" strokeType="INSIDE" strokeWidth="2.0" width="482.0" AnchorPane.leftAnchor="400.0" AnchorPane.rightAnchor="398.0" AnchorPane.topAnchor="70.0" />
 
       <!-- Label for instructions -->
-      <Label text="Please enter your details"
-             AnchorPane.leftAnchor="457.0" AnchorPane.topAnchor="95.0">
+      <Label text="Please enter your details" AnchorPane.leftAnchor="457.0" AnchorPane.topAnchor="95.0">
          <font>
             <Font name="Baloo Thambi 2 Medium" size="20.0" />
          </font>
       </Label>
 
       <!-- VBox for form content -->
-      <VBox prefHeight="527.0" prefWidth="367.0"
-            AnchorPane.leftAnchor="460.0" AnchorPane.topAnchor="122.0">
+      <VBox alignment="CENTER" layoutY="231.0" prefHeight="382.0" prefWidth="367.0" AnchorPane.leftAnchor="460.0" AnchorPane.topAnchor="231.0">
          <children>
             <Label text="The Pantry's open">
                <font>
                   <Font name="Baloo Thambi 2 Medium" size="20.0" />
                </font>
             </Label>
-            <VBox alignment="CENTER" prefHeight="156.0" prefWidth="367.0">
+            <TextField fx:id="usernameTxt" promptText="Username">
+               <padding>
+                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+               </padding>
+               <VBox.margin>
+                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+               </VBox.margin>
+            </TextField>
+            <PasswordField fx:id="passwordTxt" promptText="Password">
+               <VBox.margin>
+                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+               </VBox.margin>
+               <padding>
+                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+               </padding>
+            </PasswordField>
+            <VBox alignment="CENTER" prefHeight="91.0" prefWidth="365.0">
                <VBox.margin>
                   <Insets top="220.0" />
                </VBox.margin>
                <children>
-                  <Button mnemonicParsing="false" onAction="#handleLogin"
-                          prefHeight="32.0" prefWidth="200.0" text="Log In">
+                  <Button fx:id="loginBtn" mnemonicParsing="false" onAction="#handleLogin" prefHeight="32.0" prefWidth="200.0" text="Log In">
                      <VBox.margin>
                         <Insets bottom="20.0" />
                      </VBox.margin>
                   </Button>
-                  <Button fx:id="signUpBtn" mnemonicParsing="false"
-                          onAction="#handleSignUp" prefHeight="32.0"
-                          prefWidth="200.0" text="Sign Up">
-                     <VBox.margin>
-                        <Insets top="10.0" />
-                     </VBox.margin>
-                  </Button>
+                  <Button fx:id="backBtn" mnemonicParsing="false" onAction="#goBack" prefHeight="26.0" prefWidth="202.0" text="Back" />
                </children>
             </VBox>
          </children>

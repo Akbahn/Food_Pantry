@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.geometry.Pos?>
+
+<BorderPane xmlns="http://javafx.com/javafx/8"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="org.main.food_pantry.Controllers.StudentControllers.FoodListPageController"
+            style="-fx-background-color: #f9f9f9;">
+
+    <!-- Header -->
+    <top>
+        <HBox alignment="CENTER_LEFT"
+              spacing="20"
+              style="-fx-background-color: #2e8b57; -fx-padding: 15;">
+            <Label fx:id="categoryLabel"
+                   text="Category Name"
+                   style="-fx-font-size: 22px; -fx-text-fill: white; -fx-font-weight: bold;" />
+        </HBox>
+    </top>
+
+    <!-- Scrollable Center Food Grid -->
+    <center>
+        <ScrollPane fitToWidth="true"
+                    fitToHeight="true"
+                    style="-fx-padding: 20;">
+            <FlowPane fx:id="foodFlowPane"
+                      hgap="20"
+                      vgap="20"
+                      alignment="CENTER"
+                      style="-fx-padding: 20;">
+                <!-- Food cards will be added here dynamically -->
+            </FlowPane>
+        </ScrollPane>
+    </center>
+</BorderPane>

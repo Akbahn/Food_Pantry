@@ -6,18 +6,172 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.control.MenuItem;
-import javafx.scene.image.ImageView;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 import org.main.food_pantry.Controllers.SceneManager;
 import org.main.food_pantry.Databases.CurrentUser;
+import org.main.food_pantry.Items.Food;
 import org.main.food_pantry.Items.FoodCategory;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 public class StudentPageController {
 
+    private final List<Food> cart = new ArrayList<>();
+
+    @FXML
+    private Button history;
+
+    @FXML
+    private Button signOutBtn;
+
+
+    @FXML
+    private Button cartBtn;
+
+    @FXML
+    private Button dairyBtn;
+
+    @FXML
+    private Button drinkBtn;
+
+    @FXML
+    private Button fruitBtn;
+
+    @FXML
+    private Button grainBtn;
+
+    @FXML
+    private BorderPane mainPane;
+
+    @FXML
+    private Button meatBtn;
+
+    @FXML
+    private Button otherBtn;
+
+    @FXML
+    private Button snackBtn;
+
+    @FXML
+    private Button vegBtn;
+
+    @FXML
+    private void handleCategoryClick(ActionEvent event) {
+        Button clickedButton = (Button) event.getSource();
+        FoodCategory category = null;
+
+        // Match button to category
+        if (clickedButton == dairyBtn) {
+            category = FoodCategory.DAIRY;
+        } else if (clickedButton == drinkBtn) {
+            category = FoodCategory.BEVERAGES;
+        } else if (clickedButton == fruitBtn) {
+            category = FoodCategory.FRUITS;
+        } else if (clickedButton == grainBtn) {
+            category = FoodCategory.GRAINS;
+        } else if (clickedButton == meatBtn) {
+            category = FoodCategory.MEAT;
+        } else if (clickedButton == vegBtn) {
+            category = FoodCategory.VEGETABLES;
+        } else if (clickedButton == snackBtn) {
+            category = FoodCategory.SNACKS;
+        } else if (clickedButton == otherBtn) {
+            category = FoodCategory.OTHER;
+        }
+
+        if (category != null) {
+            try {
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("/org/main/food_pantry/StudentPages/FoodListPage.fxml"));
+                Parent root = loader.load();
+
+                FoodListPageController controller = loader.getController();
+                controller.setCategory(category);
+                controller.setParentController(this);
+
+                Stage newStage = new Stage();
+                newStage.setTitle(category.name() + " Items");
+                newStage.setScene(new Scene(root));
+                newStage.show(); // not modal — allows both windows to be used independently
+
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
+    @FXML
+    void goToCartPage(ActionEvent event) {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/org/main/food_pantry/StudentPages/CartCheckoutPage.fxml"));
+            Parent root = loader.load();
+
+            // Pass cart to the controller
+            CartCheckoutPageController controller = loader.getController();
+            controller.setCart(cart);
+
+            Stage stage = new Stage();
+            stage.setTitle("Cart Checkout");
+            stage.setScene(new Scene(root));
+            stage.show(); // non-modal
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+    }
+
+    public void addToCart(Food food) {
+        cart.add(food);
+        System.out.println("[DEBUG] Added to cart: " + food.getName() + " | Total: " + cart.size());
+        cartBtn.setText("Cart (" + cart.size() + ")");
+    }
+
+    @FXML
+    void goHome(ActionEvent event) {
+        // Clear the logged-in user data
+        CurrentUser.clear();
+
+        // Switch to the splash screen
+        Stage stage = (Stage) mainPane.getScene().getWindow();
+        SceneManager.switchScene(stage, "/org/main/food_pantry/splash-page.fxml");
+
+    }
+
+    @FXML
+    void goToHistory(ActionEvent event) {
+        openRequestPage(false);
+
+    }
+
+    private int getLoggedInUserId() {
+        return CurrentUser.getId();
+    }
+
+    private void openRequestPage(boolean pendingOnly) {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/org/main/food_pantry/StudentPages/StudentRequestPage.fxml"));
+            Parent root = loader.load();
+
+            StudentRequestPageController controller = loader.getController();
+            controller.setData(pendingOnly, getLoggedInUserId());
+
+            Stage stage = new Stage();
+            stage.setTitle(pendingOnly ? "Pending Requests" : "Request History");
+            stage.setScene(new Scene(root));
+            stage.show();
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+
+
+
+/*
     @FXML private ImageView fruitImage;
     @FXML private ImageView cartImage;
     @FXML private ImageView dairyImage;
@@ -129,4 +283,6 @@ public class StudentPageController {
             e.printStackTrace();
         }
     }
+    */
+
 }

@@ -3,17 +3,17 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextArea?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
-<?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane fx:id="mainPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="780.0" prefWidth="1280.0" styleClass="border-pane" stylesheets="@mainpagestyle.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<BorderPane fx:id="mainPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="780.0" prefWidth="1280.0" styleClass="border-pane" stylesheets="@mainpagestyle.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.main.food_pantry.Controllers.StudentControllers.StudentPageController">
    <top>
       <HBox prefHeight="100.0" prefWidth="200.0" BorderPane.alignment="CENTER">
          <children>
-            <Button mnemonicParsing="false" prefHeight="45.0" prefWidth="120.0" style="-fx-background-radius: 12px; -fx-border-radius: 12px;" styleClass="top-button" text="Dairy">
+            <Button fx:id="dairyBtn" mnemonicParsing="false" onAction="#handleCategoryClick" prefHeight="45.0" prefWidth="120.0" style="-fx-background-radius: 12px; -fx-border-radius: 12px;" styleClass="top-button" text="Dairy">
                <font>
                   <Font size="14.0" />
                </font>
@@ -21,7 +21,7 @@
                   <Insets bottom="20.0" left="20.0" right="40.0" top="20.0" />
                </HBox.margin>
             </Button>
-            <Button mnemonicParsing="false" prefHeight="45.0" prefWidth="120.0" style="-fx-background-radius: 12px; -fx-border-radius: 12px;" styleClass="top-button" text="Drink">
+            <Button fx:id="drinkBtn" mnemonicParsing="false" onAction="#handleCategoryClick" prefHeight="45.0" prefWidth="120.0" style="-fx-background-radius: 12px; -fx-border-radius: 12px;" styleClass="top-button" text="Drink">
                <font>
                   <Font size="14.0" />
                </font>
@@ -29,7 +29,7 @@
                   <Insets top="20.0" />
                </HBox.margin>
             </Button>
-            <Button mnemonicParsing="false" prefHeight="45.0" prefWidth="120.0" style="-fx-background-radius: 12px; -fx-border-radius: 12px;" styleClass="top-button" text="Fruit">
+            <Button fx:id="fruitBtn" mnemonicParsing="false" onAction="#handleCategoryClick" prefHeight="45.0" prefWidth="120.0" style="-fx-background-radius: 12px; -fx-border-radius: 12px;" styleClass="top-button" text="Fruit">
                <font>
                   <Font size="14.0" />
                </font>
@@ -37,7 +37,7 @@
                   <Insets left="40.0" top="20.0" />
                </HBox.margin>
             </Button>
-            <Button mnemonicParsing="false" prefHeight="45.0" prefWidth="120.0" style="-fx-background-radius: 12px; -fx-border-radius: 12px;" styleClass="top-button" text="Grain">
+            <Button fx:id="grainBtn" mnemonicParsing="false" onAction="#handleCategoryClick" prefHeight="45.0" prefWidth="120.0" style="-fx-background-radius: 12px; -fx-border-radius: 12px;" styleClass="top-button" text="Grain">
                <font>
                   <Font size="14.0" />
                </font>
@@ -45,7 +45,7 @@
                   <Insets left="40.0" top="20.0" />
                </HBox.margin>
             </Button>
-            <Button mnemonicParsing="false" prefHeight="45.0" prefWidth="120.0" style="-fx-background-radius: 12px; -fx-border-radius: 12px;" styleClass="top-button" text="Meat">
+            <Button fx:id="meatBtn" mnemonicParsing="false" onAction="#handleCategoryClick" prefHeight="45.0" prefWidth="120.0" style="-fx-background-radius: 12px; -fx-border-radius: 12px;" styleClass="top-button" text="Meat">
                <font>
                   <Font size="14.0" />
                </font>
@@ -53,7 +53,7 @@
                   <Insets left="40.0" top="20.0" />
                </HBox.margin>
             </Button>
-            <Button mnemonicParsing="false" prefHeight="45.0" prefWidth="120.0" style="-fx-background-radius: 12px; -fx-border-radius: 12px;" styleClass="top-button" text="Snack">
+            <Button fx:id="snackBtn" mnemonicParsing="false" onAction="#handleCategoryClick" prefHeight="45.0" prefWidth="120.0" style="-fx-background-radius: 12px; -fx-border-radius: 12px;" styleClass="top-button" text="Snack">
                <font>
                   <Font size="14.0" />
                </font>
@@ -61,7 +61,7 @@
                   <Insets left="40.0" top="20.0" />
                </HBox.margin>
             </Button>
-            <Button mnemonicParsing="false" prefHeight="45.0" prefWidth="120.0" style="-fx-background-radius: 12px; -fx-border-radius: 12px;" styleClass="top-button" text="Vegetables">
+            <Button fx:id="vegBtn" mnemonicParsing="false" onAction="#handleCategoryClick" prefHeight="45.0" prefWidth="120.0" style="-fx-background-radius: 12px; -fx-border-radius: 12px;" styleClass="top-button" text="Vegetables">
                <font>
                   <Font size="14.0" />
                </font>
@@ -69,7 +69,7 @@
                   <Insets left="40.0" top="20.0" />
                </HBox.margin>
             </Button>
-            <Button mnemonicParsing="false" prefHeight="45.0" prefWidth="120.0" style="-fx-background-radius: 12px; -fx-border-radius: 12px;" styleClass="top-button" text="Other">
+            <Button fx:id="otherBtn" mnemonicParsing="false" onAction="#handleCategoryClick" prefHeight="45.0" prefWidth="120.0" style="-fx-background-radius: 12px; -fx-border-radius: 12px;" styleClass="top-button" text="Other">
                <font>
                   <Font size="14.0" />
                </font>
@@ -90,11 +90,14 @@
                         <Font name="System Bold" size="51.0" />
                      </font>
                   </Label>
-                  <Rectangle arcHeight="30.0" arcWidth="30.0" fill="#ffffffea" height="470.0" stroke="#008036" strokeType="INSIDE" strokeWidth="2.0" width="450.0">
+                  <TextArea editable="false" opacity="0.71" prefHeight="522.0" prefWidth="640.0">
                      <VBox.margin>
-                        <Insets top="20.0" />
+                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                      </VBox.margin>
-                  </Rectangle>
+                     <padding>
+                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                     </padding>
+                  </TextArea>
                </children>
             </VBox>
             <VBox alignment="TOP_CENTER" prefHeight="580.0" prefWidth="640.0">
@@ -104,23 +107,26 @@
                         <Font name="System Bold" size="50.0" />
                      </font>
                   </Label>
-                  <Rectangle arcHeight="30.0" arcWidth="30.0" fill="#ffffffeb" height="390.0" stroke="#008036" strokeType="INSIDE" strokeWidth="2.0" width="450.0">
+                  <TextArea editable="false" opacity="0.74" prefHeight="361.0" prefWidth="640.0">
                      <VBox.margin>
-                        <Insets top="20.0" />
+                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                      </VBox.margin>
-                  </Rectangle>
+                     <padding>
+                        <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+                     </padding>
+                  </TextArea>
                   <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0">
                      <children>
-                        <Button mnemonicParsing="false" prefHeight="41.0" prefWidth="115.0" styleClass="bottom-button" text="Pending" textFill="WHITE">
+                        <Button fx:id="cartBtn" mnemonicParsing="false" onAction="#goToCartPage" prefHeight="41.0" prefWidth="115.0" styleClass="bottom-button" text="Cart" textFill="WHITE">
                            <HBox.margin>
                               <Insets right="50.0" />
                            </HBox.margin></Button>
-                        <Button mnemonicParsing="false" prefHeight="41.0" prefWidth="115.0" styleClass="bottom-button" text="Pending" textFill="WHITE">
+                        <Button fx:id="history" mnemonicParsing="false" onAction="#goToHistory" prefHeight="41.0" prefWidth="115.0" styleClass="bottom-button" text="History" textFill="WHITE">
                            <HBox.margin>
                               <Insets />
                            </HBox.margin>
                         </Button>
-                        <Button mnemonicParsing="false" prefHeight="41.0" prefWidth="115.0" styleClass="bottom-button" text="Pending" textFill="WHITE">
+                        <Button fx:id="signOutBtn" mnemonicParsing="false" onAction="#goHome" prefHeight="41.0" prefWidth="115.0" styleClass="bottom-button" text="Sign Out" textFill="WHITE">
                            <HBox.margin>
                               <Insets left="50.0" />
                            </HBox.margin>

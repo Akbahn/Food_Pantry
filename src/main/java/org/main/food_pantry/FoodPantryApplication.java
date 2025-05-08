@@ -10,14 +10,13 @@ public class FoodPantryApplication extends Application {
 
     @Override
     public void start(Stage primaryStage) {
-        //test
         // Initialize the database first
         Database.initializeDatabase();
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/org/main/food_pantry/splash-page.fxml"));
             Scene scene = new Scene(loader.load());
             primaryStage.setScene(scene);
-            primaryStage.setTitle("Food Pantry Login");
+            primaryStage.setTitle("Food Pantry Application");
             primaryStage.show();
         } catch (Exception e) {
             e.printStackTrace();

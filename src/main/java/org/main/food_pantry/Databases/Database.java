@@ -12,8 +12,12 @@ public class Database {
 
     // Global connection method used in all other classes
     public static Connection getConnection() throws SQLException {
-        return DriverManager.getConnection(DB_URL, USERNAME, PASSWORD);
+        System.out.println("[DEBUG] Attempting to connect to database at: " + DB_URL);
+        Connection conn = DriverManager.getConnection(DB_URL, USERNAME, PASSWORD);
+        System.out.println("[DEBUG] Successfully connected to the database.");
+        return conn;
     }
+
 
     // Initial setup method called once at app start
     public static boolean initializeDatabase() {

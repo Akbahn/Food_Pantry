@@ -7,7 +7,7 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.VBox?>
 
-<VBox alignment="CENTER" prefHeight="310.0" prefWidth="167.0" spacing="10" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.main.food_pantry.Controllers.CreateAccountController">
+<VBox alignment="CENTER" prefHeight="250.0" prefWidth="431.0" spacing="10" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.main.food_pantry.Controllers.CreateAccountController">
 
    <Label text="Create Account" />
    <TextField fx:id="nameField" promptText="Full Name" />

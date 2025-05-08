@@ -22,12 +22,12 @@
             <AnchorPane prefHeight="200.0" prefWidth="200.0" />
             <ImageView fitHeight="220.0" fitWidth="220.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@Images/FarmingdaleLogo.png" />
+                  <Image url="@Images/Icons/FarmingdaleLogo.png" />
                </image>
             </ImageView>
          </children>
       </VBox>
-      <VBox alignment="TOP_CENTER" layoutX="277.0" layoutY="314.0" prefHeight="128.0" prefWidth="668.0">
+      <VBox alignment="TOP_CENTER" layoutX="306.0" layoutY="319.0" prefHeight="128.0" prefWidth="668.0">
          <children>
             <Label prefHeight="39.0" prefWidth="198.0" text="   Welcome to">
                <font>
@@ -55,23 +55,29 @@
             </Label>
          </children>
       </VBox>
-      <HBox alignment="CENTER" layoutX="447.0" layoutY="527.0" prefHeight="81.0" prefWidth="415.0">
+      <HBox alignment="CENTER" layoutX="433.0" layoutY="518.0" prefHeight="81.0" prefWidth="415.0">
          <children>
-            <Button fx:id="LoginBtn" mnemonicParsing="false" onAction="#goToLoginPage" text="Login">
+            <Button fx:id="LoginBtn" mnemonicParsing="false" onAction="#goToLoginPage" prefHeight="48.0" prefWidth="93.5" style="-fx-background-color: LightGreen;" text="Login">
                <font>
                   <Font size="22.0" />
                </font>
                <HBox.margin>
-                  <Insets right="10.0" />
+                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                </HBox.margin>
+               <padding>
+                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+               </padding>
             </Button>
-            <Button fx:id="signUpBtn" mnemonicParsing="false" onAction="#goToSignUpPage" text="Sign Up">
+            <Button fx:id="signUpBtn" mnemonicParsing="false" onAction="#goToSignUpPage" style="-fx-background-color: LightGreen;" text="Sign Up">
                <font>
                   <Font size="22.0" />
                </font>
                <HBox.margin>
-                  <Insets left="10.0" />
+                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                </HBox.margin>
+               <padding>
+                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+               </padding>
             </Button>
          </children>
       </HBox>
