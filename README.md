@@ -7,13 +7,13 @@ A desktop-based JavaFX application that allows students to request food, volunte
 ---
 ## 👥 Team Members
 
-| Name            | Role / Contribution                                   |
-|-----------------|-------------------------------------------------------|
-| Hyder Akbar     | Full-Stack Developer, Database Integration, JavaFX UI |
+| Name            | Role / Contribution                                     |
+|-----------------|-------------------------------------------------------  |
+| Hyder Akbar     | Full-Stack Developer, Database Integration, JavaFX UI   |
 | Catherine Parveez | [Software Developer, Tech Support, Scribe]            |
-| Christopher D'Aleo | [e.g. Admin Dashboard, Analytics]                     |
-| [Add Name Here] | [e.g. UX Design, Scene Builder Layouts]               |
-| [Add Name Here] | [e.g. UX Design, Scene Builder Layouts]               |
+| Christopher D'Aleo | [e.g. Admin Dashboard, Analytics]                    |
+| [Add Name Here] | [e.g. UX Design, Scene Builder Layouts]                 |
+| [Add Name Here] | [e.g. UX Design, Scene Builder Layouts]                 |
 
 
 ## 💡 Features
