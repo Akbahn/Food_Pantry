@@ -9,63 +9,58 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+<?import javafx.scene.text.TextFlow?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"
-            prefHeight="780.0" prefWidth="1280.0"
-            xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml"
-            fx:controller="org.main.food_pantry.Controllers.LoginPageController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="780.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.main.food_pantry.Controllers.LoginPageController">
    <children>
       <!-- Background Image -->
-      <ImageView fitHeight="780.0" fitWidth="1280.0"
-                 AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0"
-                 AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0"
-                 pickOnBounds="true">
+      <ImageView fitHeight="780.0" fitWidth="1280.0" pickOnBounds="true" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <image>
             <Image url="@Images/mainbackground.png" />
          </image>
       </ImageView>
 
       <!-- White rectangle with rounded corners -->
-      <Rectangle arcHeight="20.0" arcWidth="20.0" fill="#ffffffe3"
-                 height="631.0" width="482.0"
-                 AnchorPane.leftAnchor="400.0" AnchorPane.rightAnchor="398.0"
-                 AnchorPane.topAnchor="70.0"
-                 smooth="false" stroke="#00751f" strokeLineCap="ROUND"
-                 strokeType="INSIDE" strokeWidth="2.0" />
+      <Rectangle arcHeight="20.0" arcWidth="20.0" fill="#ffffffe3" height="631.0" smooth="false" stroke="#00751f" strokeLineCap="ROUND" strokeType="INSIDE" strokeWidth="2.0" width="482.0" AnchorPane.leftAnchor="400.0" AnchorPane.rightAnchor="398.0" AnchorPane.topAnchor="70.0" />
 
       <!-- Label for instructions -->
-      <Label text="Please enter your details"
-             AnchorPane.leftAnchor="457.0" AnchorPane.topAnchor="95.0">
+      <Label text="Please enter your details" AnchorPane.leftAnchor="457.0" AnchorPane.topAnchor="95.0">
          <font>
             <Font name="Baloo Thambi 2 Medium" size="20.0" />
          </font>
       </Label>
 
       <!-- VBox for form content -->
-      <VBox prefHeight="527.0" prefWidth="367.0"
-            AnchorPane.leftAnchor="460.0" AnchorPane.topAnchor="122.0">
+      <VBox prefHeight="527.0" prefWidth="367.0" AnchorPane.leftAnchor="460.0" AnchorPane.topAnchor="122.0">
          <children>
-            <Label text="The Pantry's open">
+            <Label text="The pantry's open-">
                <font>
                   <Font name="Baloo Thambi 2 Medium" size="20.0" />
                </font>
+               <VBox.margin>
+                  <Insets top="8.0" />
+               </VBox.margin>
             </Label>
+            <TextFlow prefHeight="200.0" prefWidth="200.0">
+               <children>
+                  <TextFlow xmlns="http://javafx.com/javafx"
+                            xmlns:fx="http://javafx.com/fxml"
+                            layoutX="50" layoutY="50">
+                     <Text text="and so is our " style="-fx-fill: black;"/>
+                     <Text text="heart" style="-fx-fill: green;"/>
+                  </TextFlow>
+
+               </children>
+            </TextFlow>
             <VBox alignment="CENTER" prefHeight="156.0" prefWidth="367.0">
                <VBox.margin>
                   <Insets top="220.0" />
                </VBox.margin>
                <children>
-                  <Button mnemonicParsing="false" onAction="#handleLogin"
-                          prefHeight="32.0" prefWidth="200.0" text="Log In">
+                  <Button mnemonicParsing="false" onAction="#handleLogin" prefHeight="32.0" prefWidth="200.0" text="Log In">
                      <VBox.margin>
                         <Insets bottom="20.0" />
-                     </VBox.margin>
-                  </Button>
-                  <Button fx:id="signUpBtn" mnemonicParsing="false"
-                          onAction="#handleSignUp" prefHeight="32.0"
-                          prefWidth="200.0" text="Sign Up">
-                     <VBox.margin>
-                        <Insets top="10.0" />
                      </VBox.margin>
                   </Button>
                </children>
