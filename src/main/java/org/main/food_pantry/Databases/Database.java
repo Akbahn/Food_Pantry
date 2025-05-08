@@ -2,7 +2,8 @@ package org.main.food_pantry.Databases;
 
 import java.sql.*;
 
-public class Database {
+public class Database
+{
 
     private static final String MYSQL_SERVER_URL = "jdbc:mysql://food-pantry.mysql.database.azure.com/";
     private static final String DB_NAME = "food-pantry";
@@ -11,7 +12,8 @@ public class Database {
     private static final String PASSWORD = "Hyder1000";
 
     // Global connection method used in all other classes
-    public static Connection getConnection() throws SQLException {
+    public static Connection getConnection() throws SQLException
+    {
         return DriverManager.getConnection(DB_URL, USERNAME, PASSWORD);
     }
 
@@ -80,7 +82,8 @@ public class Database {
             statement.close();
             conn.close();
 
-        } catch (Exception e) {
+        } catch (Exception e)
+        {
             System.out.println("❌ Setup failed:");
             e.printStackTrace();
         }

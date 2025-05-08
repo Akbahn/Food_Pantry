@@ -7,7 +7,8 @@ import org.main.food_pantry.Users.Volunteer;
 
 import java.sql.*;
 
-public class UserDAO {
+public class UserDAO
+{
 
     public static int registerUser(User user) {
         String sql = "INSERT INTO users (name, username, password, role) VALUES (?, ?, ?, ?)";

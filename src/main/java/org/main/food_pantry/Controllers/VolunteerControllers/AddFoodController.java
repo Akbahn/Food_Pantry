@@ -20,7 +20,8 @@ import java.time.LocalDate;
 import java.util.Arrays;
 import java.nio.file.*;
 
-public class AddFoodController {
+public class AddFoodController
+{
     private boolean isUpdateMode = false;
     private int foodIdToUpdate = -1;
 
@@ -35,7 +36,8 @@ public class AddFoodController {
     private String selectedImageFileName = null;
 
     @FXML
-    public void initialize() {
+    public void initialize()
+    {
         categoryComboBox.setItems(FXCollections.observableArrayList(
                 Arrays.stream(FoodCategory.values())
                         .map(Enum::name)
@@ -45,23 +47,28 @@ public class AddFoodController {
     }
 
     @FXML
-    void handleSubmit() {
+    void handleSubmit()
+    {
         String name = nameField.getText();
         String selectedCategory = categoryComboBox.getValue();
         String quantityText = quantityField.getText();
         LocalDate expirationDate = expirationDatePicker.getValue();
         String description = descriptionArea.getText();
 
-        if (name.isEmpty() || selectedCategory == null || quantityText.isEmpty() || expirationDate == null) {
+        if (name.isEmpty() || selectedCategory == null || quantityText.isEmpty() || expirationDate == null)
+        {
             showAlert(Alert.AlertType.ERROR, "Missing Fields", "Please fill out all fields!");
             return;
         }
 
         int quantity;
-        try {
+        try
+        {
             quantity = Integer.parseInt(quantityText);
             if (quantity < 0) throw new NumberFormatException();
-        } catch (NumberFormatException e) {
+        }
+        catch (NumberFormatException e)
+        {
             showAlert(Alert.AlertType.ERROR, "Invalid Quantity", "Quantity must be a positive number!");
             return;
         }
@@ -70,23 +77,30 @@ public class AddFoodController {
 
         Food newFood = new Food(0, name, category, quantity, expirationDate, description, selectedImageFileName);
         boolean success;
-        if (isUpdateMode) {
+        if (isUpdateMode)
+        {
             newFood.setId(foodIdToUpdate); // make sure the ID is included
             success = FoodDAO.updateFood(newFood);
-        } else {
+        }
+        else
+        {
             System.out.println("Image to save: " + selectedImageFileName);
             success = FoodDAO.insertFood(newFood);
         }
-        if (success) {
+        if (success)
+        {
             showAlert(Alert.AlertType.INFORMATION, "Success", "Food added successfully!");
             closeWindow();
-        } else {
+        }
+        else
+        {
             showAlert(Alert.AlertType.ERROR, "Database Error", "Failed to add food. Try again.");
         }
     }
 
     @FXML
-    private void handleUploadImage(ActionEvent event) {
+    private void handleUploadImage(ActionEvent event)
+    {
         FileChooser fileChooser = new FileChooser();
         fileChooser.setTitle("Choose Food Image");
         fileChooser.getExtensionFilters().add(
@@ -95,8 +109,10 @@ public class AddFoodController {
 
         File selectedFile = fileChooser.showOpenDialog(uploadImageBtn.getScene().getWindow());
 
-        if (selectedFile != null) {
-            try {
+        if (selectedFile != null)
+        {
+            try
+            {
                 // Clean up filename to remove spaces
                 String fileName = selectedFile.getName().replaceAll(" ", "_");
                 Path targetPath = Paths.get("src/main/resources/org/main/food_pantry/Images/FoodItems/" + fileName);
@@ -105,14 +121,17 @@ public class AddFoodController {
                 Files.createDirectories(targetPath.getParent());
 
                 // Only copy if file doesn't already exist
-                if (!Files.exists(targetPath)) {
+                if (!Files.exists(targetPath))
+                {
                     Files.copy(selectedFile.toPath(), targetPath);
                 }
 
                 selectedImageFileName = fileName;
                 imageFileNameLabel.setText(fileName);
 
-            } catch (IOException e) {
+            }
+            catch (IOException e)
+            {
                 e.printStackTrace();
                 showAlert(Alert.AlertType.ERROR, "Upload Failed", "Failed to upload image.");
             }
@@ -120,7 +139,8 @@ public class AddFoodController {
     }
 
 
-    private void showAlert(Alert.AlertType alertType, String title, String message) {
+    private void showAlert(Alert.AlertType alertType, String title, String message)
+    {
         Alert alert = new Alert(alertType);
         alert.setTitle(title);
         alert.setHeaderText(null);
@@ -139,8 +159,10 @@ public class AddFoodController {
     }
 
 
-    public void saveImageToClassesDirectory(File selectedFile) {
-        try {
+    public void saveImageToClassesDirectory(File selectedFile)
+    {
+        try
+        {
             // Target directory inside target/classes
             Path targetPath = Paths.get("target/classes/org/main/food_pantry/Images/FoodItems/" + selectedFile.getName());
 
@@ -151,14 +173,17 @@ public class AddFoodController {
             Files.copy(selectedFile.toPath(), targetPath, StandardCopyOption.REPLACE_EXISTING);
 
             System.out.println("Image saved to: " + targetPath.toString());
-        } catch (IOException e) {
+        }
+        catch (IOException e)
+        {
             System.err.println("Error saving image: " + e.getMessage());
         }
     }
 
 
 
-    public void prefillFood(Food food) {
+    public void prefillFood(Food food)
+    {
         nameField.setText(food.getName());
         categoryComboBox.setValue(food.getCategory().name());
         quantityField.setText(String.valueOf(food.getQuantity()));

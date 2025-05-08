@@ -10,7 +10,8 @@ import org.main.food_pantry.Items.Food;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class SplashPageController {
+public class SplashPageController
+{
 
     @FXML
     private ListView<String> requestedItemList;
@@ -29,7 +30,8 @@ public class SplashPageController {
         loadLowStockItems();
     }
 
-    private void loadLowStockItems() {
+    private void loadLowStockItems()
+    {
         List<Food> allFoods = FoodDAO.getAvailableFoods(); // You should already have this DAO method
 
         List<String> lowStockItems = allFoods.stream()
@@ -45,13 +47,15 @@ public class SplashPageController {
     }
 
     @FXML
-    private void goToLoginPage() {
+    private void goToLoginPage()
+    {
         Stage stage = (Stage) loginBtn.getScene().getWindow();
         SceneManager.switchScene(stage, "/org/main/food_pantry/login-page.fxml");
     }
 
     @FXML
-    private void goToSignUpPage() {
+    private void goToSignUpPage()
+    {
         Stage stage = (Stage) signUpBtn.getScene().getWindow();
         SceneManager.switchScene(stage, "/org/main/food_pantry/create-account-page.fxml");
     }

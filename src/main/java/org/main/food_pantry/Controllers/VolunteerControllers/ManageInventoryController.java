@@ -21,7 +21,8 @@ import org.main.food_pantry.Databases.FoodDAO;
 import java.io.IOException;
 import java.time.LocalDate;
 
-public class ManageInventoryController {
+public class ManageInventoryController
+{
 
     @FXML
     private TableColumn<Food, String> nameColumn;
@@ -38,7 +39,8 @@ public class ManageInventoryController {
 
 
     @FXML
-    public void initialize() {
+    public void initialize()
+    {
         nameColumn.setCellValueFactory(cell -> new SimpleStringProperty(cell.getValue().getName()));
         categoryColumn.setCellValueFactory(cell -> new SimpleStringProperty(cell.getValue().getCategory().toString()));
         quantityColumn.setCellValueFactory(cell -> new SimpleIntegerProperty(cell.getValue().getQuantity()).asObject());
@@ -48,13 +50,17 @@ public class ManageInventoryController {
             String imagePath = cellData.getValue().getImagePath();
             ImageView imgView = new ImageView();
 
-            try {
-                if (imagePath != null && !imagePath.isEmpty()) {
+            try
+            {
+                if (imagePath != null && !imagePath.isEmpty())
+                {
                     Image image = new Image(getClass().getResourceAsStream(
                             "/org/main/food_pantry/Images/FoodItems/" + imagePath));
                     imgView.setImage(image);
                 }
-            } catch (Exception e) {
+            }
+            catch (Exception e)
+            {
                 // Optionally log or load a default image
             }
 
@@ -74,15 +80,18 @@ public class ManageInventoryController {
     private TableView<Food> foodTable; // make sure your fx:id matches!
 
     @FXML
-    void handleUpdateQuantity() {
+    void handleUpdateQuantity()
+    {
         Food selectedFood = foodTable.getSelectionModel().getSelectedItem();
 
-        if (selectedFood == null) {
+        if (selectedFood == null)
+        {
             showAlert(Alert.AlertType.ERROR, "Please select a food item to update.");
             return;
         }
 
-        try {
+        try
+        {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/org/main/food_pantry/VolunteerPages/UpdateQuantityPage.fxml"));
             Parent root = loader.load();
 
@@ -100,13 +109,16 @@ public class ManageInventoryController {
             // Optional: after closing popup, you can refresh table if needed
             refreshFoodTable();
 
-        } catch (IOException e) {
+        }
+        catch (IOException e)
+        {
             e.printStackTrace();
         }
     }
 
     @FXML
-    void handleAddFood() {
+    void handleAddFood()
+    {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/org/main/food_pantry/VolunteerPages/AddFoodPage.fxml"));
             Parent root = loader.load();
@@ -120,22 +132,27 @@ public class ManageInventoryController {
             // 🔁 Refresh table AFTER window closes
             refreshFoodTable();
 
-        } catch (IOException e) {
+        }
+        catch (IOException e)
+        {
             e.printStackTrace();
         }
     }
 
 
     @FXML
-    private void handleUpdateFood() {
+    private void handleUpdateFood()
+    {
         Food selectedFood = foodTable.getSelectionModel().getSelectedItem();
 
-        if (selectedFood == null) {
+        if (selectedFood == null)
+        {
             showAlert(Alert.AlertType.ERROR, "Please select a food item to update.");
             return;
         }
 
-        try {
+        try
+        {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/org/main/food_pantry/VolunteerPages/AddFoodPage.fxml"));
             Parent root = loader.load();
 
@@ -150,16 +167,20 @@ public class ManageInventoryController {
 
             refreshFoodTable();
 
-        } catch (IOException e) {
+        }
+        catch (IOException e)
+        {
             e.printStackTrace();
         }
     }
 
     @FXML
-    private void handleDeleteFood() {
+    private void handleDeleteFood()
+    {
         Food selectedFood = foodTable.getSelectionModel().getSelectedItem();
 
-        if (selectedFood == null) {
+        if (selectedFood == null)
+        {
             showAlert(Alert.AlertType.ERROR, "Please select a food item to delete.");
             return;
         }
@@ -170,12 +191,16 @@ public class ManageInventoryController {
 
         confirm.showAndWait();
 
-        if (confirm.getResult() == ButtonType.YES) {
+        if (confirm.getResult() == ButtonType.YES)
+        {
             boolean success = FoodDAO.deleteFoodById(selectedFood.getId()); // implement this in DAO
-            if (success) {
+            if (success)
+            {
                 showAlert(Alert.AlertType.INFORMATION, "Food deleted successfully.");
                 refreshFoodTable();
-            } else {
+            }
+            else
+            {
                 showAlert(Alert.AlertType.ERROR, "Failed to delete food.");
             }
         }
@@ -183,14 +208,16 @@ public class ManageInventoryController {
 
 
 
-    private void showAlert(Alert.AlertType alertType, String message) {
+    private void showAlert(Alert.AlertType alertType, String message)
+    {
         Alert alert = new Alert(alertType);
         alert.setHeaderText(null);
         alert.setContentText(message);
         alert.showAndWait();
     }
 
-    private void refreshFoodTable() {
+    private void refreshFoodTable()
+    {
         var foods = FoodDAO.getAllFoods();
         System.out.println("Foods loaded: " + foods.size()); // Debug log
         foodTable.setItems(foods);

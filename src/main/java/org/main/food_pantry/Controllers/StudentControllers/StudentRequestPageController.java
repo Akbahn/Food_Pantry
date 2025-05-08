@@ -12,7 +12,8 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class StudentRequestPageController {
+public class StudentRequestPageController
+{
 
     @FXML
     private Label pageTitle;
@@ -35,7 +36,8 @@ public class StudentRequestPageController {
     private boolean showPendingOnly;
     private int userId;
 
-    public void setData(boolean showPendingOnly, int userId) {
+    public void setData(boolean showPendingOnly, int userId)
+    {
         this.showPendingOnly = showPendingOnly;
         this.userId = userId;
         pageTitle.setText(showPendingOnly ? "Pending Requests" : "Request History");
@@ -44,14 +46,16 @@ public class StudentRequestPageController {
         loadRequests();
     }
 
-    private void setupTable() {
+    private void setupTable()
+    {
         foodNameColumn.setCellValueFactory(new PropertyValueFactory<>("foodName"));
         quantityColumn.setCellValueFactory(new PropertyValueFactory<>("quantityRequested"));
         statusColumn.setCellValueFactory(new PropertyValueFactory<>("status"));
         dateColumn.setCellValueFactory(new PropertyValueFactory<>("requestDate"));
     }
 
-    private void loadRequests() {
+    private void loadRequests()
+    {
         requestsTable.getItems().clear();
         List<Request> requests = new ArrayList<>();
 
@@ -60,12 +64,14 @@ public class StudentRequestPageController {
                 "JOIN food_items f ON r.food_id = f.id " +
                 "WHERE r.user_id = ?";
 
-        if (showPendingOnly) {
+        if (showPendingOnly)
+        {
             sql += " AND r.status = 'Pending'";
         }
 
         try (Connection conn = Database.getConnection();
-             PreparedStatement stmt = conn.prepareStatement(sql)) {
+             PreparedStatement stmt = conn.prepareStatement(sql))
+        {
 
             stmt.setInt(1, userId);
             ResultSet rs = stmt.executeQuery();
@@ -82,7 +88,9 @@ public class StudentRequestPageController {
 
             requestsTable.getItems().addAll(requests);
 
-        } catch (Exception e) {
+        }
+        catch (Exception e)
+        {
             e.printStackTrace();
         }
     }

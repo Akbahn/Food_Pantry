@@ -8,8 +8,10 @@ import javafx.stage.Stage;
 import java.io.IOException;
 import java.net.URL;
 
-public class SceneManager {
-    public static void switchScene(Stage stage, String fxmlPath) {
+public class SceneManager
+{
+    public static void switchScene(Stage stage, String fxmlPath)
+    {
         try {
             URL resource = SceneManager.class.getResource(fxmlPath);
             if (resource == null) {

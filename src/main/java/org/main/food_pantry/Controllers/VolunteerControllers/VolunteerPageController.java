@@ -7,7 +7,8 @@ import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 import org.main.food_pantry.Controllers.SceneManager;
 
-public class VolunteerPageController {
+public class VolunteerPageController
+{
 
     @FXML
     private ImageView cartImage;
@@ -25,19 +26,22 @@ public class VolunteerPageController {
     private Button scheduleBtn;
 
     @FXML
-    void goToManageInventory(ActionEvent event) {
+    void goToManageInventory(ActionEvent event)
+    {
         Stage stage = (Stage) manageInventoryBtn.getScene().getWindow();
         SceneManager.switchScene(stage, "/org/main/food_pantry/VolunteerPages/ManageInventoryPage.fxml");
     }
 
     @FXML
-    void goToManageRequests(ActionEvent event) {
+    void goToManageRequests(ActionEvent event)
+    {
         Stage stage = (Stage) manageRequestsBtn.getScene().getWindow();
         SceneManager.switchScene(stage, "/org/main/food_pantry/VolunteerPages/ManageRequestsPage.fxml");
     }
 
     @FXML
-    void goToSchedule(ActionEvent event) {
+    void goToSchedule(ActionEvent event)
+    {
         Stage stage = (Stage) scheduleBtn.getScene().getWindow();
         SceneManager.switchScene(stage, "/org/main/food_pantry/VolunteerPages/VolunteerSchedulePage.fxml");
     }

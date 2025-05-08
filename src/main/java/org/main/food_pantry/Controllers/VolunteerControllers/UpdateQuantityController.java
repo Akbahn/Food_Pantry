@@ -8,7 +8,8 @@ import org.main.food_pantry.Databases.FoodDAO;
 
 import java.time.LocalDate;
 
-public class UpdateQuantityController {
+public class UpdateQuantityController
+{
 
     @FXML
     private TextField quantityField;
@@ -23,19 +24,24 @@ public class UpdateQuantityController {
     }
 
     @FXML
-    void handleUpdate() {
+    void handleUpdate()
+    {
         String quantityText = quantityField.getText();
 
-        if (quantityText.isEmpty()) {
+        if (quantityText.isEmpty())
+        {
             showAlert(Alert.AlertType.ERROR, "Please enter a quantity.");
             return;
         }
 
         int quantity;
-        try {
+        try
+        {
             quantity = Integer.parseInt(quantityText);
             if (quantity < 0) throw new NumberFormatException();
-        } catch (NumberFormatException e) {
+        }
+        catch (NumberFormatException e)
+        {
             showAlert(Alert.AlertType.ERROR, "Quantity must be a positive number!");
             return;
         }
@@ -44,16 +50,20 @@ public class UpdateQuantityController {
         foodToUpdate.setQuantity(quantity);
 
         LocalDate newExpiration = expirationDatePicker.getValue();
-        if (newExpiration != null) {
+        if (newExpiration != null)
+        {
             foodToUpdate.setExpiration_date(newExpiration);
         }
 
         boolean success = FoodDAO.updateFood(foodToUpdate);
 
-        if (success) {
+        if (success)
+        {
             showAlert(Alert.AlertType.INFORMATION, "Quantity updated successfully!");
             closeWindow();
-        } else {
+        }
+        else
+        {
             showAlert(Alert.AlertType.ERROR, "Failed to update quantity. Try again.");
         }
     }
@@ -65,14 +75,16 @@ public class UpdateQuantityController {
 
 
 
-    private void showAlert(Alert.AlertType alertType, String message) {
+    private void showAlert(Alert.AlertType alertType, String message)
+    {
         Alert alert = new Alert(alertType);
         alert.setHeaderText(null);
         alert.setContentText(message);
         alert.showAndWait();
     }
 
-    private void closeWindow() {
+    private void closeWindow()
+    {
         Stage stage = (Stage) quantityField.getScene().getWindow();
         stage.close();
     }

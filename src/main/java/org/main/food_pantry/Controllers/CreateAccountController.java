@@ -3,9 +3,12 @@ package org.main.food_pantry.Controllers;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.stage.Stage;
+import org.main.food_pantry.Databases.CurrentUser;
 import org.main.food_pantry.Databases.UserDAO;
+import org.main.food_pantry.Items.Food;
 
-public class CreateAccountController {
+public class CreateAccountController
+{
 
     @FXML private TextField nameField;
     @FXML private TextField usernameField;
@@ -14,30 +17,52 @@ public class CreateAccountController {
     @FXML private Label statusLabel;
 
     @FXML
-    public void initialize() {
+    public void initialize()
+    {
         roleComboBox.getItems().addAll("Student", "Volunteer", "Admin");
         roleComboBox.setValue("Student");
     }
 
     @FXML
-    public void handleCreateAccount() {
+    public void handleCreateAccount()
+    {
         String name = nameField.getText().trim();
         String username = usernameField.getText().trim();
         String password = passwordField.getText().trim();
         String role = roleComboBox.getValue();
 
-        if (name.isEmpty() || username.isEmpty() || password.isEmpty()) {
+        if (name.isEmpty() || username.isEmpty() || password.isEmpty())
+        {
             statusLabel.setText("Please fill out all fields.");
             return;
         }
 
         boolean success = UserDAO.createUser(name, username, password, role);
-        if (success) {
+        if (success)
+        {
             statusLabel.setText("✅ Account created successfully!");
             Stage stage = (Stage) nameField.getScene().getWindow();
             SceneManager.switchScene(stage, "/org/main/food_pantry/login-page.fxml");
-        } else {
+        } else
+        {
             statusLabel.setText("❌ Username already exists or error occurred.");
         }
+
+        /*public void prefillUser(CurrentUser user)
+        {
+            nameField.setText(food.getName());
+            categoryComboBox.setValue(food.getCategory().name());
+            quantityField.setText(String.valueOf(food.getQuantity()));
+            expirationDatePicker.setValue(food.getExpirationDate());
+            descriptionArea.setText(food.getDescription());
+
+            if (food.getImagePath() != null) {
+                selectedImageFileName = food.getImagePath();
+                imageFileNameLabel.setText(selectedImageFileName);
+            }
+
+            isUpdateMode = true;
+            foodIdToUpdate = food.getId();
+        }*/
     }
 }

@@ -13,7 +13,8 @@ import org.main.food_pantry.Items.FoodCategory;
 
 import java.io.IOException;
 
-public class StudentPageController {
+public class StudentPageController
+{
 
     @FXML private ImageView fruitImage;
     @FXML private ImageView cartImage;
@@ -40,8 +41,10 @@ public class StudentPageController {
         openRequestPage(false);
     }
 
-    private void openRequestPage(boolean pendingOnly) {
-        try {
+    private void openRequestPage(boolean pendingOnly)
+    {
+        try
+        {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/org/main/food_pantry/StudentPages/StudentRequestPage.fxml"));
             Parent root = loader.load();
 
@@ -53,7 +56,9 @@ public class StudentPageController {
             stage.setScene(new Scene(root));
             stage.show();
 
-        } catch (IOException e) {
+        }
+        catch (IOException e)
+        {
             e.printStackTrace();
         }
     }
@@ -63,12 +68,14 @@ public class StudentPageController {
     }
 
     @FXML
-    void goToSearch(ActionEvent event) {
+    void goToSearch(ActionEvent event)
+    {
         // Placeholder for future search feature
     }
 
     @FXML
-    public void initialize() {
+    public void initialize()
+    {
         if (dairyImage != null) dairyImage.setOnMouseClicked(e -> openFoodList(FoodCategory.DAIRY));
         if (drinkImage != null) drinkImage.setOnMouseClicked(e -> openFoodList(FoodCategory.BEVERAGES));
         if (fruitImage != null) fruitImage.setOnMouseClicked(e -> openFoodList(FoodCategory.FRUITS));
@@ -79,8 +86,10 @@ public class StudentPageController {
         if (otherImage != null) otherImage.setOnMouseClicked(e -> openFoodList(FoodCategory.OTHER));
     }
 
-    private void openFoodList(FoodCategory category) {
-        try {
+    private void openFoodList(FoodCategory category)
+    {
+        try
+        {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/org/main/food_pantry/StudentPages/FoodListPage.fxml"));
             Parent root = loader.load();
 
@@ -92,7 +101,9 @@ public class StudentPageController {
             stage.setScene(new Scene(root));
             stage.show();
 
-        } catch (IOException e) {
+        }
+        catch (IOException e)
+        {
             e.printStackTrace();
         }
     }

@@ -13,7 +13,8 @@ import org.main.food_pantry.Databases.FoodDAO;
 import org.main.food_pantry.Models.RequestRow;
 import org.main.food_pantry.Databases.RequestDAO;
 
-public class ManageRequestsController {
+public class ManageRequestsController
+{
 
     @FXML private TableView<RequestRow> requestTable;
     @FXML private TableColumn<RequestRow, String> studentColumn;
@@ -26,7 +27,8 @@ public class ManageRequestsController {
     private final ObservableList<RequestRow> requests = FXCollections.observableArrayList();
 
     @FXML
-    public void initialize() {
+    public void initialize()
+    {
         studentColumn.setCellValueFactory(new PropertyValueFactory<>("studentName"));
         foodColumn.setCellValueFactory(new PropertyValueFactory<>("foodName"));
         quantityColumn.setCellValueFactory(new PropertyValueFactory<>("quantity"));
@@ -37,13 +39,16 @@ public class ManageRequestsController {
         addActionButtons();
     }
 
-    private void loadRequests() {
+    private void loadRequests()
+    {
         requests.setAll(RequestDAO.getPendingRequestRows());
         requestTable.setItems(requests);
     }
 
-    private void addActionButtons() {
-        actionColumn.setCellFactory(col -> new TableCell<>() {
+    private void addActionButtons()
+    {
+        actionColumn.setCellFactory(col -> new TableCell<>()
+        {
             private final Button approveBtn = new Button("Approve");
             private final Button denyBtn = new Button("Deny");
             private final HBox btnBox = new HBox(5, approveBtn, denyBtn);
@@ -74,7 +79,8 @@ public class ManageRequestsController {
         });
     }
 
-    private void showAlert(String message) {
+    private void showAlert(String message)
+    {
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setHeaderText(null);
         alert.setContentText(message);

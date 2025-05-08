@@ -22,7 +22,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
-public class FoodListPageController {
+public class FoodListPageController
+{
 
     @FXML
     private FlowPane foodFlowPane;
@@ -38,7 +39,8 @@ public class FoodListPageController {
 
 
 
-    public void setCategory(FoodCategory category) {
+    public void setCategory(FoodCategory category)
+    {
         this.selectedCategory = category;
         categoryLabel.setText(category.name() + " Items");
 
@@ -47,9 +49,11 @@ public class FoodListPageController {
 
 
 
-    private Image getCategoryImage(FoodCategory category) {
+    private Image getCategoryImage(FoodCategory category)
+    {
         String path;
-        switch (category) {
+        switch (category)
+        {
             case DAIRY -> path = "/org/main/food_pantry/Images/FoodCategory/icons8-dairy-50.png";
             case MEAT -> path = "/org/main/food_pantry/Images/FoodCategory/icons8-meat-50.png";
             case VEGETABLES -> path = "/org/main/food_pantry/Images/FoodCategory/icons8-vegetables-48.png";

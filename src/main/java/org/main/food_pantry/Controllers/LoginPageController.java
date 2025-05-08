@@ -12,28 +12,32 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-public class LoginPageController {
+public class LoginPageController
+{
     @FXML private TextField usernameField;
     @FXML private PasswordField passwordField;
     @FXML private Label statusLabel;
     @FXML private Button signUpBtn;
 
     @FXML
-    private void handleLogin() {
+    private void handleLogin()
+    {
         String usernameInput = usernameField.getText().trim();
         String passwordInput = passwordField.getText().trim();
 
         String sql = "SELECT * FROM users WHERE username = ? AND password = ?";
 
         try (Connection conn = Database.getConnection();
-             PreparedStatement stmt = conn.prepareStatement(sql)) {
+             PreparedStatement stmt = conn.prepareStatement(sql))
+        {
 
             stmt.setString(1, usernameInput);
             stmt.setString(2, passwordInput);
 
             ResultSet rs = stmt.executeQuery();
 
-            if (rs.next()) {
+            if (rs.next())
+            {
                 // Extract user info from DB
                 int userId = rs.getInt("id");
                 String name = rs.getString("name");
@@ -52,23 +56,29 @@ public class LoginPageController {
                     case "admin" -> SceneManager.switchScene(stage, "/org/main/food_pantry/AdminPages/admin-page.fxml"); // Adjust if needed
                     default -> showAlert("Unknown role", "Your account has no valid role assigned.");
                 }
-            } else {
+            }
+            else
+            {
                 statusLabel.setText("Invalid username or password.");
             }
 
-        } catch (SQLException e) {
+        }
+        catch (SQLException e)
+        {
             e.printStackTrace();
             statusLabel.setText("Database error. Try again later.");
         }
     }
 
     @FXML
-    void handleSignup(ActionEvent event) {
+    void handleSignup(ActionEvent event)
+    {
         Stage stage = (Stage) signUpBtn.getScene().getWindow();
         SceneManager.switchScene(stage, "/org/main/food_pantry/create-account-page.fxml");
     }
 
-    private void showAlert(String title, String message) {
+    private void showAlert(String title, String message)
+    {
         Alert alert = new Alert(Alert.AlertType.ERROR);
         alert.setTitle(title);
         alert.setHeaderText(null);

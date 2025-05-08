@@ -1,10 +1,12 @@
 package org.main.food_pantry.Users;
 
-public abstract class User {
+public abstract class User
+{
     protected int id;
     protected String name, username, password, role;
 
-    public User(String name, String username, String password, String role) {
+    public User(String name, String username, String password, String role)
+    {
         this.name = name;
         this.username = username;
         this.password = password;
