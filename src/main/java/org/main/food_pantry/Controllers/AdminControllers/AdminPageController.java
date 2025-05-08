@@ -5,11 +5,32 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
+import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
+import org.main.food_pantry.Controllers.SceneManager;
+import org.main.food_pantry.Databases.CurrentUser;
 
 import java.io.IOException;
 
 public class AdminPageController {
+
+    @FXML
+    private Button signOutBtn;
+
+    @FXML
+    private AnchorPane mainPane;
+
+    @FXML
+    void goHome(ActionEvent event) {
+        // Clear the logged-in user data
+        CurrentUser.clear();
+
+        // Switch to the splash screen
+        Stage stage = (Stage) mainPane.getScene().getWindow();
+        SceneManager.switchScene(stage, "/org/main/food_pantry/splash-page.fxml");
+
+    }
 
     @FXML
     private void goToUserSearch(ActionEvent event) {

@@ -49,15 +49,20 @@ public class ManageInventoryController {
             String imagePath = cellData.getValue().getImagePath();
             ImageView imgView = new ImageView();
 
+            Image image;
             try {
-                if (imagePath != null && !imagePath.isEmpty()) {
-                    Image image = new Image(getClass().getResourceAsStream(
-                            "/food_pantry/Images/FoodItems/" + imagePath));
-                    imgView.setImage(image);
+                image = new Image(getClass().getResourceAsStream(
+                        "/org/main/food_pantry/Images/FoodItems/" + imagePath));
+                if (image.isError()) {
+                    throw new Exception("Image not found");
                 }
             } catch (Exception e) {
-                // Optionally log or load a default image
+                image = new Image(getClass().getResourceAsStream(
+                        "/org/main/food_pantry/Images/FoodItems/placeholder.png"));
             }
+            imgView.setImage(image);
+
+
 
             imgView.setFitHeight(40);
             imgView.setFitWidth(40);

@@ -55,7 +55,7 @@ public class CreateAccountController {
     @FXML
     void goBack(ActionEvent event) {
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        SceneManager.switchScene(stage, "/org/main/food_pantry/splash-screen.fxml");
+        SceneManager.switchScene(stage, "/org/main/food_pantry/splash-page.fxml");
     }
 
 }

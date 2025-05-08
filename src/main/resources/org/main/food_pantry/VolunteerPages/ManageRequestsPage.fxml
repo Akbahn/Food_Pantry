@@ -7,18 +7,33 @@
 <VBox xmlns="http://javafx.com/javafx/23.0.1"
       xmlns:fx="http://javafx.com/fxml/1"
       fx:controller="org.main.food_pantry.Controllers.VolunteerControllers.ManageRequestsController"
-      spacing="15" style="-fx-padding: 20;">
+      spacing="20"
+      alignment="TOP_CENTER"
+      style="-fx-padding: 30; -fx-background-color: #f5f5f5;">
 
-    <Label text="Pending Requests" style="-fx-font-size: 20px; -fx-font-weight: bold;" />
+    <!-- Header -->
+    <Label text="Manage Request"
+           style="-fx-font-size: 26px; -fx-font-weight: bold;" />
 
-    <TableView fx:id="requestTable" prefWidth="700">
+    <!-- Table -->
+    <TableView fx:id="requestTable" prefWidth="850" style="-fx-border-color: #cccccc; -fx-border-radius: 8;">
         <columns>
-            <TableColumn fx:id="studentColumn" text="Student" prefWidth="140"/>
-            <TableColumn fx:id="foodColumn" text="Food Item" prefWidth="140"/>
-            <TableColumn fx:id="quantityColumn" text="Quantity" prefWidth="80"/>
-            <TableColumn fx:id="dateColumn" text="Date" prefWidth="120"/>
-            <TableColumn fx:id="statusColumn" text="Status" prefWidth="100"/>
-            <TableColumn fx:id="actionColumn" text="Action" prefWidth="120"/>
+            <TableColumn fx:id="studentIdColumn" text="Student ID" prefWidth="100"/>
+            <TableColumn fx:id="studentNameColumn" text="Name" prefWidth="180"/>
+            <TableColumn fx:id="dateColumn" text="Date Requested" prefWidth="160"/>
+            <TableColumn fx:id="itemsColumn" text="Requested Items" prefWidth="130"/>
+            <TableColumn fx:id="actionColumn" text="Status" prefWidth="230"/>
         </columns>
     </TableView>
+
+    <!-- Back Home Button -->
+    <HBox alignment="CENTER">
+        <Button fx:id="backBtn"
+                text="Back Home"
+                onAction="#goBack"
+                prefWidth="150"
+                prefHeight="35"
+                style="-fx-background-color: #cccccc; -fx-text-fill: #333333; -fx-font-weight: bold;" />
+    </HBox>
+
 </VBox>

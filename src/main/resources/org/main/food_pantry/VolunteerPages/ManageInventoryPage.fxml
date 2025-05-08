@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
@@ -8,33 +9,53 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
-<BorderPane prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.main.food_pantry.Controllers.VolunteerControllers.ManageInventoryController">
+<BorderPane prefHeight="600.0" prefWidth="900.0" style="-fx-background-color: #f9f9f9;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.main.food_pantry.Controllers.VolunteerControllers.ManageInventoryController">
 
+    <!-- Header -->
     <top>
-        <Label style="-fx-font-size: 24px; -fx-font-weight: bold;" text="Manage Inventory" BorderPane.alignment="CENTER" />
+        <Label text="Manage Inventory"
+               BorderPane.alignment="CENTER"
+               style="-fx-font-size: 28px; -fx-font-weight: bold; -fx-text-fill: #2a4d69; -fx-padding: 20;" />
     </top>
 
+    <!-- Table and Buttons -->
     <center>
-        <VBox alignment="TOP_CENTER" spacing="20" style="-fx-padding: 20;">
+        <VBox alignment="TOP_CENTER" spacing="25" style="-fx-padding: 30;">
             <children>
 
-                <TableView fx:id="foodTable" prefWidth="600">
+                <!-- Food Table -->
+                <TableView fx:id="foodTable" prefWidth="800" style="-fx-border-color: #cccccc; -fx-border-radius: 8;">
                     <columns>
                         <TableColumn fx:id="imageColumn" prefWidth="100" text="Image" />
-                        <TableColumn fx:id="nameColumn" prefWidth="100" text="Name" />
-                        <TableColumn fx:id="categoryColumn" prefWidth="100" text="Category" />
+                        <TableColumn fx:id="nameColumn" prefWidth="150" text="Name" />
+                        <TableColumn fx:id="categoryColumn" prefWidth="120" text="Category" />
                         <TableColumn fx:id="quantityColumn" prefWidth="100" text="Quantity" />
-                        <TableColumn fx:id="expirationColumn" prefWidth="100" text="Expires" />
-                        <TableColumn fx:id="descriptionColumn" prefWidth="100" text="Description" />
+                        <TableColumn fx:id="expirationColumn" prefWidth="120" text="Expires" />
+                        <TableColumn fx:id="descriptionColumn" prefWidth="200" text="Description" />
                     </columns>
                 </TableView>
 
+                <!-- Button Group -->
+                <HBox alignment="CENTER" spacing="20" style="-fx-padding: 10;">
+                    <Button fx:id="backBtn" text="Back"
+                            prefWidth="120" prefHeight="35"
+                            onAction="#goBack"
+                            style="-fx-background-color: #cccccc; -fx-text-fill: #333333; -fx-font-weight: bold;" />
 
-                <HBox alignment="CENTER" spacing="20">
-               <Button fx:id="backBtn" mnemonicParsing="false" onAction="#goBack" prefHeight="26.0" prefWidth="120.0" text="Back" />
-                    <Button fx:id="addFoodBtn" onAction="#handleAddFood" prefWidth="120" text="Add Food" />
-                    <Button fx:id="updateFoodBtn" onAction="#handleUpdateFood" prefWidth="120" text="Update Food" />
-                    <Button fx:id="deleteFoodBtn" onAction="#handleDeleteFood" prefWidth="120" text="Delete Food" />
+                    <Button fx:id="addFoodBtn" text="Add Food"
+                            onAction="#handleAddFood"
+                            prefWidth="120" prefHeight="35"
+                            style="-fx-background-color: #6fb98f; -fx-text-fill: white; -fx-font-weight: bold;" />
+
+                    <Button fx:id="updateFoodBtn" text="Update Food"
+                            onAction="#handleUpdateFood"
+                            prefWidth="120" prefHeight="35"
+                            style="-fx-background-color: #f2ae72; -fx-text-fill: white; -fx-font-weight: bold;" />
+
+                    <Button fx:id="deleteFoodBtn" text="Delete Food"
+                            onAction="#handleDeleteFood"
+                            prefWidth="120" prefHeight="35"
+                            style="-fx-background-color: #d9534f; -fx-text-fill: white; -fx-font-weight: bold;" />
                 </HBox>
 
             </children>

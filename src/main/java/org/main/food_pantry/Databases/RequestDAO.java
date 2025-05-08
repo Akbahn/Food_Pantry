@@ -28,13 +28,34 @@ public class RequestDAO {
         }
     }
 
+    public static ObservableList<StudentRequestGroup> getGroupedPendingRequests() {
+        ObservableList<RequestRow> flatList = getPendingRequestRows();
+        Map<Integer, StudentRequestGroup> grouped = new LinkedHashMap<>();
+
+        for (RequestRow row : flatList) {
+            int studentId = row.getStudentId();  // ✅ MUST be from RequestRow.getStudentId()
+
+            grouped.computeIfAbsent(studentId, id -> new StudentRequestGroup(
+                    id,
+                    row.getStudent(),
+                    row.getRequestDate(),
+                    row.getStatus()
+            )).addRequest(row);
+
+        }
+
+        return FXCollections.observableArrayList(grouped.values());
+    }
+
+
     public static ObservableList<RequestRow> getPendingRequestRows() {
         ObservableList<RequestRow> rows = FXCollections.observableArrayList();
 
-        String sql = "SELECT r.id, u.name AS student, f.name AS food, r.quantity_requested, r.request_date, r.status " +
+        String sql = "SELECT r.id, u.id AS student_id, u.name AS student, f.name AS food, r.quantity_requested, r.request_date, r.status " +
                 "FROM requests r JOIN users u ON r.user_id = u.id " +
                 "JOIN food_items f ON r.food_id = f.id " +
                 "WHERE r.status = 'Pending'";
+
 
         try (Connection conn = Database.getConnection();
              Statement stmt = conn.createStatement();
@@ -43,12 +64,14 @@ public class RequestDAO {
             while (rs.next()) {
                 rows.add(new RequestRow(
                         rs.getInt("id"),
+                        rs.getInt("student_id"),          // 👈 studentId from users table
                         rs.getString("student"),
                         rs.getString("food"),
                         rs.getInt("quantity_requested"),
                         rs.getDate("request_date").toLocalDate(),
                         rs.getString("status")
                 ));
+
             }
 
         } catch (SQLException e) {
@@ -117,6 +140,19 @@ public class RequestDAO {
         }
         return map;
     }
+
+    public static void setRequestFulfilled(int requestId, boolean fulfilled) {
+        String sql = "UPDATE requests SET fulfilled = ? WHERE id = ?";
+        try (Connection conn = Database.getConnection();
+             PreparedStatement stmt = conn.prepareStatement(sql)) {
+            stmt.setBoolean(1, fulfilled);
+            stmt.setInt(2, requestId);
+            stmt.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
 
 
 
