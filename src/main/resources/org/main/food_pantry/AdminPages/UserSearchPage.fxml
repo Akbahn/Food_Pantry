@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane xmlns="http://javafx.com/javafx/21"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="org.main.food_pantry.Controllers.AdminControllers.UserSearchController"
+            style="-fx-background-color: #f4f4f4;">
+
+    <!-- Header -->
+    <top>
+        <Label text="👥 Search Users"
+               BorderPane.alignment="CENTER"
+               style="-fx-font-size: 22px; -fx-font-weight: bold; -fx-padding: 20; -fx-text-fill: #2e8b57;" />
+    </top>
+
+    <!-- Search + Table -->
+    <center>
+        <VBox spacing="20" style="-fx-padding: 30;">
+
+            <!-- Search Bar -->
+            <HBox spacing="10" alignment="CENTER_LEFT">
+                <TextField fx:id="searchField"
+                           promptText="Search by name or username..."
+                           style="-fx-pref-width: 300;" />
+
+                <ComboBox fx:id="roleFilter"
+                          promptText="All Roles"
+                          style="-fx-pref-width: 150;" />
+
+                <Button text="Search"
+                        onAction="#handleSearch"
+                        style="-fx-background-color: #2e8b57; -fx-text-fill: white; -fx-font-weight: bold;" />
+            </HBox>
+
+            <!-- User Table -->
+            <TableView fx:id="userTable"
+                       style="-fx-background-color: white; -fx-border-color: #ddd; -fx-border-radius: 6;"
+                       prefHeight="400" prefWidth="700">
+                <columns>
+                    <TableColumn fx:id="nameColumn" text="Name" prefWidth="230"/>
+                    <TableColumn fx:id="usernameColumn" text="Username" prefWidth="230"/>
+                    <TableColumn fx:id="roleColumn" text="Role" prefWidth="200"/>
+                </columns>
+            </TableView>
+        </VBox>
+    </center>
+</BorderPane>

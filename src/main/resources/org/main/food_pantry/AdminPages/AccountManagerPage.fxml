@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<?import javafx.collections.FXCollections?>
+<?import java.lang.String?>
+<BorderPane xmlns="http://javafx.com/javafx/21"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="org.main.food_pantry.Controllers.AdminControllers.AccountManagerController"
+            style="-fx-background-color: #f4f4f4;">
+
+    <!-- Header -->
+    <top>
+        <Label text="➕ Create Account"
+               BorderPane.alignment="CENTER"
+               style="-fx-font-size: 22px; -fx-font-weight: bold; -fx-text-fill: #2e8b57; -fx-padding: 20;" />
+    </top>
+
+    <!-- Form -->
+    <center>
+        <VBox spacing="15" alignment="CENTER" style="-fx-padding: 30;">
+
+            <TextField fx:id="nameField"
+                       promptText="Full Name"
+                       style="-fx-pref-width: 300;" />
+
+            <TextField fx:id="usernameField"
+                       promptText="Username"
+                       style="-fx-pref-width: 300;" />
+
+            <PasswordField fx:id="passwordField"
+                           promptText="Password"
+                           style="-fx-pref-width: 300;" />
+
+            <ComboBox fx:id="roleCombo"
+                      promptText="Select Role"
+                      style="-fx-pref-width: 300;">
+                <items>
+                    <FXCollections fx:factory="observableArrayList">
+                        <String fx:value="Volunteer" />
+                        <String fx:value="Student" />
+                        <String fx:value="Admin" />
+                    </FXCollections>
+                </items>
+            </ComboBox>
+
+            <Button text="Create Account"
+                    onAction="#handleCreateAccount"
+                    style="-fx-background-color: #2e8b57; -fx-text-fill: white; -fx-font-weight: bold; -fx-pref-width: 200;" />
+
+            <Label fx:id="statusLabel"
+                   text=""
+                   style="-fx-text-fill: #cc0000; -fx-font-size: 12px;" />
+        </VBox>
+    </center>
+</BorderPane>

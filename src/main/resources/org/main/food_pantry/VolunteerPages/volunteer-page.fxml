@@ -11,64 +11,57 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
-<BorderPane fx:id="rootPane" prefHeight="502.0" prefWidth="813.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.main.food_pantry.Controllers.VolunteerControllers.VolunteerPageController">
+<BorderPane fx:id="rootPane" prefHeight="600.0" prefWidth="900.0" style="-fx-background-color: #f5f5f5;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.main.food_pantry.Controllers.VolunteerControllers.VolunteerPageController">
 
     <!-- Top Menu Bar -->
     <top>
-        <HBox alignment="CENTER_LEFT" spacing="10" style="-fx-padding: 10;">
+        <HBox alignment="CENTER_LEFT" spacing="10" style="-fx-padding: 10; -fx-background-color: #2e8b57;">
             <children>
-                <MenuBar prefHeight="28.0" prefWidth="745.0">
+                <MenuBar prefWidth="750.0" style="-fx-background-color: transparent;">
                     <menus>
-                        <Menu mnemonicParsing="false" text="File">
+                        <Menu text="File">
                             <items>
-                                <MenuItem fx:id="closeMenu" mnemonicParsing="false" onAction="#closeApp" text="Close" />
+                                <MenuItem fx:id="closeMenu" onAction="#closeApp" text="Close" />
                             </items>
                         </Menu>
-                        <Menu mnemonicParsing="false" text="Edit">
+                        <Menu text="Edit">
                             <items>
-                                <MenuItem mnemonicParsing="false" text="Settings" />
+                                <MenuItem text="Settings" />
                             </items>
                         </Menu>
-                        <Menu mnemonicParsing="false" text="Log Out">
+                        <Menu text="Log Out">
                             <items>
-                                <MenuItem fx:id="signOutMenu" mnemonicParsing="false" onAction="#goHome" text="Sign oUt" />
+                                <MenuItem fx:id="signOutMenu" onAction="#goHome" text="Sign Out" />
                             </items>
                         </Menu>
                     </menus>
                 </MenuBar>
-                <ImageView fx:id="cartImage" fitHeight="29.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
-                    <image>
-                        <Image url="@../../../../food_pantry/Images/icons8-cart-30.png" />
-                    </image>
-                </ImageView>
-
             </children>
         </HBox>
     </top>
 
-    <!-- Left Sidebar -->
+    <!-- Sidebar -->
     <left>
-        <VBox alignment="TOP_CENTER" spacing="15" style="-fx-padding: 10;">
-            <children>
-                <ImageView fx:id="profileImageView" fitHeight="150" fitWidth="150">
-                    <image>
-                        <Image url="@../../../../food_pantry/Images/icons8-profile-picture-24.png" />
-                    </image>
-                </ImageView>
-                <Button fx:id="manageInventoryBtn" onAction="#goToManageInventory" prefHeight="26.0" prefWidth="150.0" text="Manage Inventory" />
-                <Button fx:id="manageRequestsBtn" onAction="#goToManageRequests" prefHeight="26.0" prefWidth="150.0" text="Manage Requests" />
-                <Button fx:id="scheduleBtn" onAction="#goToSchedule" prefHeight="26.0" prefWidth="150.0" text="Schedule" />
-            </children>
+        <VBox alignment="TOP_CENTER" spacing="20" style="-fx-padding: 20; -fx-background-color: #eaf4ec; -fx-pref-width: 200;">
+            <ImageView fx:id="profileImageView" fitHeight="120" fitWidth="120" preserveRatio="true">
+                <image>
+                    <Image url="@../Images/Icons/profilepictureIcon.png" />
+                </image>
+            </ImageView>
+
+            <Button fx:id="manageInventoryBtn" onAction="#goToManageInventory" style="-fx-pref-width: 160; -fx-background-color: #2e8b57; -fx-text-fill: white; -fx-font-weight: bold;" text="📦 Manage Inventory" />
+
+            <Button fx:id="manageRequestsBtn" onAction="#goToManageRequests" style="-fx-pref-width: 160; -fx-background-color: #2e8b57; -fx-text-fill: white; -fx-font-weight: bold;" text="📨 Manage Requests" />
+
+            <Button fx:id="scheduleBtn" onAction="#goToSchedule" style="-fx-pref-width: 160; -fx-background-color: #2e8b57; -fx-text-fill: white; -fx-font-weight: bold;" text="📅 Schedule" />
         </VBox>
     </left>
 
     <!-- Center Content -->
     <center>
-        <VBox alignment="TOP_CENTER" spacing="20" style="-fx-padding: 20;">
-            <children>
-                <Label style="-fx-font-size: 20px; -fx-font-weight: bold;" text="Volunteer Dashboard" />
-                <Label style="-fx-font-size: 14px;" text="Select an Action" />
-            </children>
+        <VBox alignment="CENTER" spacing="15" style="-fx-padding: 40;">
+            <Label style="-fx-font-size: 22px; -fx-font-weight: bold; -fx-text-fill: #2e8b57;" text="Welcome to the Volunteer Dashboard" />
+            <Label style="-fx-font-size: 14px; -fx-text-fill: #555;" text="Please select an option from the sidebar." />
         </VBox>
     </center>
 

@@ -1,5 +1,9 @@
 package org.main.food_pantry.Users;
 
+import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.property.StringProperty;
+
+
 public abstract class User {
     protected int id;
     protected String name, username, password, role;
@@ -9,6 +13,18 @@ public abstract class User {
         this.username = username;
         this.password = password;
         this.role = role;
+    }
+
+    public StringProperty nameProperty() {
+        return new SimpleStringProperty(name);
+    }
+
+    public StringProperty usernameProperty() {
+        return new SimpleStringProperty(username);
+    }
+
+    public StringProperty roleProperty() {
+        return new SimpleStringProperty(role);
     }
 
     public String getPassword() {

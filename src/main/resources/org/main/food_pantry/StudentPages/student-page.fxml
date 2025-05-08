@@ -90,7 +90,7 @@
                         <Font name="System Bold" size="51.0" />
                      </font>
                   </Label>
-                  <TextArea editable="false" opacity="0.71" prefHeight="522.0" prefWidth="640.0">
+                  <TextArea fx:id="announcmentBoard" editable="false" opacity="0.71" prefHeight="522.0" prefWidth="640.0">
                      <VBox.margin>
                         <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                      </VBox.margin>
@@ -107,7 +107,7 @@
                         <Font name="System Bold" size="50.0" />
                      </font>
                   </Label>
-                  <TextArea editable="false" opacity="0.74" prefHeight="361.0" prefWidth="640.0">
+                  <TextArea fx:id="workingHourBoard" editable="false" opacity="0.74" prefHeight="361.0" prefWidth="640.0">
                      <VBox.margin>
                         <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                      </VBox.margin>

@@ -6,6 +6,8 @@ import org.main.food_pantry.Users.User;
 import org.main.food_pantry.Users.Volunteer;
 
 import java.sql.*;
+import java.util.ArrayList;
+import java.util.List;
 
 public class UserDAO {
 
@@ -33,6 +35,36 @@ public class UserDAO {
         }
         return -1;
     }
+
+    public static List<User> getAllUsers() {
+        List<User> userList = new ArrayList<>();
+        String sql = "SELECT * FROM users";
+
+        try (Connection conn = Database.getConnection();
+             PreparedStatement stmt = conn.prepareStatement(sql);
+             ResultSet rs = stmt.executeQuery()) {
+
+            while (rs.next()) {
+                int id = rs.getInt("id");
+                String name = rs.getString("name");
+                String username = rs.getString("username");
+                String password = rs.getString("password");
+                String role = rs.getString("role");
+
+                switch (role) {
+                    case "Student" -> userList.add(new Student(id, name, username, password));
+                    case "Admin" -> userList.add(new Admin(id, name, username, password));
+                    case "Volunteer" -> userList.add(new Volunteer(id, name, username, password));
+                }
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return userList;
+    }
+
 
     public static User loginUser(String username, String password) {
         String sql = "SELECT * FROM users WHERE username = ? AND password = ?";

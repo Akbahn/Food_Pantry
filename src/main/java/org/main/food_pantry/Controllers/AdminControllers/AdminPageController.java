@@ -2,40 +2,45 @@ package org.main.food_pantry.Controllers.AdminControllers;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.stage.Stage;
+
+import java.io.IOException;
 
 public class AdminPageController {
 
     @FXML
-    private Button Alerts;
-
-    @FXML
-    private Button inventoryBtn;
-
-    @FXML
-    private Button manageUserBtn;
-
-    @FXML
-    private Button reportBtn;
-
-    @FXML
-    void showAlerts(ActionEvent event) {
-
+    private void goToUserSearch(ActionEvent event) {
+        openWindow("/org/main/food_pantry/AdminPages/UserSearchPage.fxml", "Manage Users");
     }
 
     @FXML
-    void showInventory(ActionEvent event) {
-
+    private void goToAnalytics(ActionEvent event) {
+        openWindow("/org/main/food_pantry/AdminPages/AdminAnalyticsPage.fxml", "Analytics");
     }
 
     @FXML
-    void showManageUsers(ActionEvent event) {
-
+    private void goToAccountManager(ActionEvent event) {
+        openWindow("/org/main/food_pantry/AdminPages/CreateAccountPage.fxml", "Create Account");
     }
 
     @FXML
-    void showReports(ActionEvent event) {
-
+    private void goToInfoEditor(ActionEvent event) {
+        openWindow("/org/main/food_pantry/AdminPages/InfoBoardEditor.fxml", "Edit Info Board");
     }
 
+    private void openWindow(String fxmlPath, String title) {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource(fxmlPath));
+            Parent root = loader.load();
+            Stage stage = new Stage();
+            stage.setTitle(title);
+            stage.setScene(new Scene(root));
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 }

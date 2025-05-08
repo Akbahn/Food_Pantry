@@ -6,6 +6,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.TextArea;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 import org.main.food_pantry.Controllers.SceneManager;
@@ -13,6 +14,9 @@ import org.main.food_pantry.Databases.CurrentUser;
 import org.main.food_pantry.Items.Food;
 import org.main.food_pantry.Items.FoodCategory;
 
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -20,6 +24,14 @@ import java.util.List;
 public class StudentPageController {
 
     private final List<Food> cart = new ArrayList<>();
+
+    private final String FILE_PATH = "info-board.txt";
+
+    @FXML
+    private TextArea announcmentBoard;
+
+    @FXML
+    private TextArea workingHourBoard;
 
     @FXML
     private Button history;
@@ -57,6 +69,43 @@ public class StudentPageController {
 
     @FXML
     private Button vegBtn;
+
+    @FXML
+    public void initialize() {
+        loadInfoBoard();
+    }
+
+    private void loadInfoBoard() {
+        File file = new File(FILE_PATH);
+        if (!file.exists()) return;
+
+        try (BufferedReader reader = new BufferedReader(new FileReader(file))) {
+            StringBuilder announcements = new StringBuilder();
+            StringBuilder hours = new StringBuilder();
+            String line;
+            boolean isHours = false;
+
+            while ((line = reader.readLine()) != null) {
+                if (line.equals("[ANNOUNCEMENT]")) {
+                    isHours = false;
+                } else if (line.equals("[HOURS]")) {
+                    isHours = true;
+                } else {
+                    if (isHours) {
+                        hours.append(line).append("\n");
+                    } else {
+                        announcements.append(line).append("\n");
+                    }
+                }
+            }
+
+            announcmentBoard.setText(announcements.toString().trim());
+            workingHourBoard.setText(hours.toString().trim());
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 
     @FXML
     private void handleCategoryClick(ActionEvent event) {

@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane xmlns="http://javafx.com/javafx/21"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="org.main.food_pantry.Controllers.AdminControllers.InfoBoardEditorController"
+            style="-fx-background-color: #f4f4f4;">
+
+    <!-- Top Header -->
+    <top>
+        <Label text="📢 Edit Info Board"
+               BorderPane.alignment="CENTER"
+               style="-fx-font-size: 22px; -fx-font-weight: bold; -fx-text-fill: #2e8b57; -fx-padding: 20;" />
+    </top>
+
+    <!-- Center Content -->
+    <center>
+        <VBox spacing="20" alignment="CENTER" style="-fx-padding: 30;">
+
+            <!-- Announcement Area -->
+            <VBox spacing="8" style="-fx-pref-width: 600;">
+                <Label text="Announcement Board" style="-fx-font-size: 14px; -fx-font-weight: bold;" />
+                <TextArea fx:id="announcementArea" promptText="Enter announcements here..." prefRowCount="6" />
+            </VBox>
+
+            <!-- Working Hours Area -->
+            <VBox spacing="8" style="-fx-pref-width: 600;">
+                <Label text="Working Hours" style="-fx-font-size: 14px; -fx-font-weight: bold;" />
+                <TextArea fx:id="hoursArea" promptText="Enter pantry working hours here..." prefRowCount="4" />
+            </VBox>
+
+            <!-- Save Button -->
+            <Button text="Save Changes"
+                    onAction="#handleSave"
+                    style="-fx-background-color: #2e8b57; -fx-text-fill: white; -fx-font-weight: bold; -fx-pref-width: 200;" />
+
+            <!-- Optional Save Status -->
+            <Label fx:id="saveStatusLabel"
+                   text=""
+                   style="-fx-text-fill: #2e8b57;" />
+        </VBox>
+    </center>
+</BorderPane>

@@ -5,6 +5,8 @@ import javafx.collections.ObservableList;
 import org.main.food_pantry.Models.RequestRow;
 
 import java.sql.*;
+import java.util.LinkedHashMap;
+import java.util.Map;
 
 public class RequestDAO {
     public static boolean insertRequest(int userId, int foodId, int quantity) {
@@ -66,6 +68,57 @@ public class RequestDAO {
             e.printStackTrace();
         }
     }
+
+    public static Map<String, Integer> getMostRequestedFoods() {
+        Map<String, Integer> map = new LinkedHashMap<>();
+        String sql = """
+        SELECT f.name, COUNT(*) as count
+        FROM requests r
+        JOIN food_items f ON r.food_id = f.id
+        GROUP BY r.food_id
+        ORDER BY count DESC
+        LIMIT 10
+        """;
+
+        try (Connection conn = Database.getConnection();
+             PreparedStatement stmt = conn.prepareStatement(sql);
+             ResultSet rs = stmt.executeQuery()) {
+
+            while (rs.next()) {
+                map.put(rs.getString("name"), rs.getInt("count"));
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return map;
+    }
+
+    public static Map<String, Integer> getTopRequestingStudents() {
+        Map<String, Integer> map = new LinkedHashMap<>();
+        String sql = """
+        SELECT u.username, COUNT(*) as count
+        FROM requests r
+        JOIN users u ON r.user_id = u.id
+        WHERE u.role = 'Student'
+        GROUP BY r.user_id
+        ORDER BY count DESC
+        LIMIT 10
+        """;
+
+        try (Connection conn = Database.getConnection();
+             PreparedStatement stmt = conn.prepareStatement(sql);
+             ResultSet rs = stmt.executeQuery()) {
+
+            while (rs.next()) {
+                map.put(rs.getString("username"), rs.getInt("count"));
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return map;
+    }
+
+
 
     public static boolean approveRequest(int requestId, int quantity, String foodName) {
         try (Connection conn = Database.getConnection()) {
