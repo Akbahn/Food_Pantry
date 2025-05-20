@@ -13,7 +13,7 @@ A desktop-based JavaFX application that allows students to request food, volunte
 | Catherine Parveez | [Software Developer, Tech Support, Scribe]            |
 | Christopher D'Aleo | [e.g. Admin Dashboard, Analytics]                     |
 | Khayalamakhosi Dlamini | [e.g. UX Design, Scene Builder Layouts]               |
-| [Add Name Here] | [e.g. UX Design, Scene Builder Layouts]               |
+| Nia Bardavelidze | Project Manager, Scribe & Frontend Architect               |
 
 
 ## 💡 Features
