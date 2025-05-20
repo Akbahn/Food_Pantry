@@ -42,7 +42,7 @@ A desktop-based JavaFX application that allows students to request food, volunte
 
 | Component       | Technology                     |
 |----------------|---------------------------------|
-| UI             | JavaFX with Scene Builder       |
+| UI             | JavaFX with Scene Builder, CSS, HTML|
 | Backend        | Java 23 with modular structure  |
 | Database       | MySQL hosted on Azure           |
 | ORM/DAO        | Custom DAO classes (JDBC)       |
